@@ -7,12 +7,13 @@
 //
 
 #import "SimpleCollectionViewCell.h"
-
+#import <objc/runtime.h>
 @implementation SimpleCollectionViewCell
 
 - (void)prepareForReuse {
 	
 	[super prepareForReuse];
 }
+
 
 @end

@@ -97,4 +97,12 @@
 	return YES;
 }
 
+- (UICollectionViewCell *)loadCellWithRow:(NSInteger)row {
+	
+	NSString *formClassStr = [@"Form" stringByAppendingFormat:@"%ld_%ld",_rowCount,row];
+	
+	Class cls = NSClassFromString(formClassStr);
+//	self.contentView = (UIView *)[[cls alloc] init];
+}
+
 @end
