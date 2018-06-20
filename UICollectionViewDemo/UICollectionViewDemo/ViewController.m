@@ -48,7 +48,7 @@
     _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
 	_collectionView.delegate = self;
 	_collectionView.dataSource = self;
-	_collectionView.backgroundColor = [UIColor darkGrayColor];
+	_collectionView.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.6];
 	[self.view addSubview:_collectionView];
 	
 	// 注册 cell
@@ -134,13 +134,38 @@
 	return YES;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    FormBaseCell *cell = (FormBaseCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    
+    CGAffineTransform transf = cell.transform;
+    transf = CGAffineTransformScale(transf, 0.98, 0.98);
+    
+    [UIView animateWithDuration:0.1 animations:^{
+        
+        cell.transform = transf;
+    }];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    FormBaseCell *cell = (FormBaseCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    
+    CGAffineTransform transf = cell.transform;
+    transf = CGAffineTransformIdentity;
+    
+    [UIView animateWithDuration:0.1 animations:^{
+        
+        cell.transform = transf;
+    }];
+}
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    NSLog(@"indexPath.row:%ld",indexPath.row);
     
-    NSString *formClassStr = [@"Form" stringByAppendingFormat:@"%ld_%d",_imageCount,0];
-    FormBaseCell *cell = (FormBaseCell *)[collectionView dequeueReusableCellWithReuseIdentifier:formClassStr forIndexPath:indexPath];
-    [cell setNeedsLayout];
+    //push vc
 }
 
 - (UICollectionViewCell *)loadCellWithIndexPath:(NSIndexPath *)indexPath {

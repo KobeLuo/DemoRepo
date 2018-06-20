@@ -37,6 +37,7 @@
 		183B6AD220DA9A26009DFD93 /* Form2_3.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B6AD120DA9A26009DFD93 /* Form2_3.m */; };
 		183B6AD520DA9A30009DFD93 /* Form2_4.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B6AD420DA9A30009DFD93 /* Form2_4.m */; };
 		183B6AD820DA9A39009DFD93 /* Form2_5.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B6AD720DA9A39009DFD93 /* Form2_5.m */; };
+		183B6ADB20DAB271009DFD93 /* ditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B6ADA20DAB271009DFD93 /* ditorViewController.m */; };
 		CDE74BC220D89A1D00A01347 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE74BC120D89A1D00A01347 /* main.m */; };
 		CDE74BC520D89A1D00A01347 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE74BC420D89A1D00A01347 /* AppDelegate.m */; };
 		CDE74BC820D89A1D00A01347 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE74BC720D89A1D00A01347 /* ViewController.m */; };
@@ -110,6 +111,8 @@
 		183B6AD420DA9A30009DFD93 /* Form2_4.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Form2_4.m; sourceTree = "<group>"; };
 		183B6AD620DA9A39009DFD93 /* Form2_5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Form2_5.h; sourceTree = "<group>"; };
 		183B6AD720DA9A39009DFD93 /* Form2_5.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Form2_5.m; sourceTree = "<group>"; };
+		183B6AD920DAB271009DFD93 /* ditorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ditorViewController.h; sourceTree = "<group>"; };
+		183B6ADA20DAB271009DFD93 /* ditorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ditorViewController.m; sourceTree = "<group>"; };
 		29648A003E6E50E2B18AC4C3 /* Pods-UICollectionViewDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UICollectionViewDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UICollectionViewDemo/Pods-UICollectionViewDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		46E9A8123044195E87148D9B /* Pods-UICollectionViewDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UICollectionViewDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-UICollectionViewDemo/Pods-UICollectionViewDemo.release.xcconfig"; sourceTree = "<group>"; };
 		5CBF8BC6570AAB30D07891CE /* Pods_UICollectionViewDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UICollectionViewDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -294,6 +297,8 @@
 				CDE74BC420D89A1D00A01347 /* AppDelegate.m */,
 				CDE74BC620D89A1D00A01347 /* ViewController.h */,
 				CDE74BC720D89A1D00A01347 /* ViewController.m */,
+				183B6AD920DAB271009DFD93 /* ditorViewController.h */,
+				183B6ADA20DAB271009DFD93 /* ditorViewController.m */,
 				CDE8A3D420D9E1F100AB867D /* FormBaseCell.h */,
 				CDE8A3D520D9E1F100AB867D /* FormBaseCell.m */,
 				183B6A7C20DA7551009DFD93 /* Forms */,
@@ -441,6 +446,7 @@
 				CDE74BE020D8E24500A01347 /* UIView+Extension.m in Sources */,
 				183B6ABA20DA96DE009DFD93 /* Form3_3.m in Sources */,
 				183B6A8720DA8CEC009DFD93 /* Form6_1.m in Sources */,
+				183B6ADB20DAB271009DFD93 /* ditorViewController.m in Sources */,
 				CDE74BC820D89A1D00A01347 /* ViewController.m in Sources */,
 				CDE74BDD20D8B1FD00A01347 /* SimpleCVLayoutAttr.m in Sources */,
 				183B6AC620DA9710009DFD93 /* Form3_7.m in Sources */,

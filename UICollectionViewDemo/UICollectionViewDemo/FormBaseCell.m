@@ -44,9 +44,12 @@
 	
     UIView *view = self.contentView;
     view.layer.borderColor = [UIColor whiteColor].CGColor;
-    view.layer.borderWidth = 1.f;
+    view.layer.borderWidth = 4.f;
     view.layer.masksToBounds = YES;
-    
+    view.layer.shadowColor = [UIColor darkGrayColor].CGColor;
+    view.layer.shadowOffset = CGSizeMake(2.f, 2.f);
+    view.layer.shadowOpacity = 0.5;
+    view.clipsToBounds = NO;
     NSArray *views = @[_image1,_image2,_image3,_image4,_image5,_image6];
     NSArray *colors = @[[UIColor redColor],[UIColor blueColor],[UIColor yellowColor],[UIColor purpleColor],[UIColor magentaColor],[UIColor grayColor]];
     
@@ -54,7 +57,6 @@
     for (UIView *view in views) {
         
         view.backgroundColor = colors[index ++];
-
         [self.contentView addSubview:view];
     }
     
@@ -72,5 +74,6 @@
 		count ++;
 	}
 }
+
 
 @end
