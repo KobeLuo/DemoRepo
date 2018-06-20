@@ -55,6 +55,20 @@
 	[_collectionView registerClass:[SimpleCollectionViewCell class] forCellWithReuseIdentifier:_identifier];
 }
 
+- (void)registerCell {
+	
+	NSString *path = [[NSBundle mainBundle] pathForResource:@"FormList" ofType:@"plist"];
+	NSDictionary *info = [NSDictionary dictionaryWithContentsOfFile:path];
+	
+	for (NSString *key in info.allKeys) {
+		
+		NSArray *forms = info[key];
+		for (NSString *form in forms) {
+			
+			[_collectionView registerClass:NSClassFromString(form) forCellWithReuseIdentifier:form];
+		}
+	}
+}
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
 	
@@ -97,12 +111,13 @@
 	return YES;
 }
 
-- (UICollectionViewCell *)loadCellWithRow:(NSInteger)row {
+- (UICollectionViewCell *)loadCellWithIndexPath:(NSIndexPath *)indexPath {
 	
-	NSString *formClassStr = [@"Form" stringByAppendingFormat:@"%ld_%ld",_rowCount,row];
+	NSString *formClassStr = [@"Form" stringByAppendingFormat:@"%ld_%ld",_rowCount,indexPath.row];
 	
-	Class cls = NSClassFromString(formClassStr);
-//	self.contentView = (UIView *)[[cls alloc] init];
+	UICollectionViewCell *cell = [_collectionView dequeueReusableCellWithReuseIdentifier:formClassStr forIndexPath:indexPath];
+	
+	return cell;
 }
 
 @end

@@ -18,6 +18,8 @@
 		CDE74BDD20D8B1FD00A01347 /* SimpleCVLayoutAttr.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE74BDC20D8B1FD00A01347 /* SimpleCVLayoutAttr.m */; };
 		CDE74BE020D8E24500A01347 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE74BDF20D8E24500A01347 /* UIView+Extension.m */; };
 		CDE74BE220D8E4F500A01347 /* Form1.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDE74BE120D8E4F500A01347 /* Form1.xib */; };
+		CDE8A3D320D9DE3C00AB867D /* FormList.plist in Resources */ = {isa = PBXBuildFile; fileRef = CDE8A3D220D9DE3C00AB867D /* FormList.plist */; };
+		CDE8A3D620D9E1F100AB867D /* FormBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE8A3D520D9E1F100AB867D /* FormBaseCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,9 @@
 		CDE74BDE20D8E24500A01347 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		CDE74BDF20D8E24500A01347 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		CDE74BE120D8E4F500A01347 /* Form1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Form1.xib; sourceTree = "<group>"; };
+		CDE8A3D220D9DE3C00AB867D /* FormList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = FormList.plist; sourceTree = "<group>"; };
+		CDE8A3D420D9E1F100AB867D /* FormBaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormBaseCell.h; sourceTree = "<group>"; };
+		CDE8A3D520D9E1F100AB867D /* FormBaseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FormBaseCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +102,11 @@
 				CDE74BC420D89A1D00A01347 /* AppDelegate.m */,
 				CDE74BC620D89A1D00A01347 /* ViewController.h */,
 				CDE74BC720D89A1D00A01347 /* ViewController.m */,
+				CDE8A3D420D9E1F100AB867D /* FormBaseCell.h */,
+				CDE8A3D520D9E1F100AB867D /* FormBaseCell.m */,
 				CDE74BD820D8A26400A01347 /* SimpleCollectionViewCell.h */,
 				CDE74BD920D8A26400A01347 /* SimpleCollectionViewCell.m */,
+				CDE8A3D220D9DE3C00AB867D /* FormList.plist */,
 				CDE74BE120D8E4F500A01347 /* Form1.xib */,
 				CDE74BDB20D8B1FD00A01347 /* SimpleCVLayoutAttr.h */,
 				CDE74BDC20D8B1FD00A01347 /* SimpleCVLayoutAttr.m */,
@@ -182,6 +190,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDE8A3D320D9DE3C00AB867D /* FormList.plist in Resources */,
 				CDE74BD020D89A1D00A01347 /* LaunchScreen.storyboard in Resources */,
 				CDE74BCD20D89A1D00A01347 /* Assets.xcassets in Resources */,
 				CDE74BCB20D89A1D00A01347 /* Main.storyboard in Resources */,
@@ -255,6 +264,7 @@
 				CDE74BDD20D8B1FD00A01347 /* SimpleCVLayoutAttr.m in Sources */,
 				CDE74BC520D89A1D00A01347 /* AppDelegate.m in Sources */,
 				CDE74BDA20D8A26400A01347 /* SimpleCollectionViewCell.m in Sources */,
+				CDE8A3D620D9E1F100AB867D /* FormBaseCell.m in Sources */,
 				CDE74BC220D89A1D00A01347 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,6 +424,7 @@
 				CDE74BD620D89A1E00A01347 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
