@@ -10,4 +10,7 @@
 
 @interface SimpleCollectionViewCell : UICollectionViewCell
 
+@property (nonatomic) UIImageView *image1;
+@property (nonatomic) UIImageView *image2;
+
 @end
