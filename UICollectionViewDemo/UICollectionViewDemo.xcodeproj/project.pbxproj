@@ -38,6 +38,7 @@
 		183B6AD520DA9A30009DFD93 /* Form2_4.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B6AD420DA9A30009DFD93 /* Form2_4.m */; };
 		183B6AD820DA9A39009DFD93 /* Form2_5.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B6AD720DA9A39009DFD93 /* Form2_5.m */; };
 		183B6ADB20DAB271009DFD93 /* ditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B6ADA20DAB271009DFD93 /* ditorViewController.m */; };
+		CD97C2B120DB30E000C9EBDF /* CDPhotoPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD97C2AF20DB30E000C9EBDF /* CDPhotoPickerView.m */; };
 		CDE74BC220D89A1D00A01347 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE74BC120D89A1D00A01347 /* main.m */; };
 		CDE74BC520D89A1D00A01347 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE74BC420D89A1D00A01347 /* AppDelegate.m */; };
 		CDE74BC820D89A1D00A01347 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE74BC720D89A1D00A01347 /* ViewController.m */; };
@@ -116,6 +117,8 @@
 		29648A003E6E50E2B18AC4C3 /* Pods-UICollectionViewDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UICollectionViewDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UICollectionViewDemo/Pods-UICollectionViewDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		46E9A8123044195E87148D9B /* Pods-UICollectionViewDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UICollectionViewDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-UICollectionViewDemo/Pods-UICollectionViewDemo.release.xcconfig"; sourceTree = "<group>"; };
 		5CBF8BC6570AAB30D07891CE /* Pods_UICollectionViewDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UICollectionViewDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD97C2AF20DB30E000C9EBDF /* CDPhotoPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDPhotoPickerView.m; sourceTree = "<group>"; };
+		CD97C2B020DB30E000C9EBDF /* CDPhotoPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDPhotoPickerView.h; sourceTree = "<group>"; };
 		CDE74BBD20D89A1D00A01347 /* UICollectionViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UICollectionViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDE74BC120D89A1D00A01347 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CDE74BC320D89A1D00A01347 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -272,6 +275,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CD97C2AE20DB30E000C9EBDF /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				CD97C2B020DB30E000C9EBDF /* CDPhotoPickerView.h */,
+				CD97C2AF20DB30E000C9EBDF /* CDPhotoPickerView.m */,
+			);
+			path = ImagePicker;
+			sourceTree = "<group>";
+		};
 		CDE74BB420D89A1D00A01347 = {
 			isa = PBXGroup;
 			children = (
@@ -301,6 +313,7 @@
 				183B6ADA20DAB271009DFD93 /* ditorViewController.m */,
 				CDE8A3D420D9E1F100AB867D /* FormBaseCell.h */,
 				CDE8A3D520D9E1F100AB867D /* FormBaseCell.m */,
+				CD97C2AE20DB30E000C9EBDF /* ImagePicker */,
 				183B6A7C20DA7551009DFD93 /* Forms */,
 				CDE74BD820D8A26400A01347 /* SimpleCollectionViewCell.h */,
 				CDE74BD920D8A26400A01347 /* SimpleCollectionViewCell.m */,
@@ -477,6 +490,7 @@
 				183B6AD220DA9A26009DFD93 /* Form2_3.m in Sources */,
 				183B6A9920DA9141009DFD93 /* Form4_1.m in Sources */,
 				183B6AC920DA99E6009DFD93 /* Form2_0.m in Sources */,
+				CD97C2B120DB30E000C9EBDF /* CDPhotoPickerView.m in Sources */,
 				183B6A9620DA911F009DFD93 /* Form4_0.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

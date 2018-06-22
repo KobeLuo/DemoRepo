@@ -14,9 +14,9 @@
 	
 	if (!(self = [super init])) { return nil; }
 	
-	self.minimumInteritemSpacing = 10;
-//	self.minimumLineSpacing = 20;
-	self.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+//	self.minimumInteritemSpacing = 40;
+	self.minimumLineSpacing = 20;
+	self.sectionInset = UIEdgeInsetsMake(0, 20, 0, 20);
 	self.itemSize = CGSizeMake(10, 100);
 	self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
 	

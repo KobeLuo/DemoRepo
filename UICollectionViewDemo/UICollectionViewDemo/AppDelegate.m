@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <Photos/Photos.h>
 
 @interface AppDelegate ()
 
@@ -17,6 +18,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
+	
+	// 获取所有资源的集合，并按资源的创建时间排序
+//	PHFetchOptions *options = [[PHFetchOptions alloc] init];
+//	options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES]];
+//	PHFetchResult *assetsFetchResults = [PHAsset fetchAssetsWithOptions:options];
+//	// 这时 assetsFetchResults 中包含的，应该就是各个资源（PHAsset）
+//	for (NSInteger i = 0; i < assetsFetchResults.count; i++) {
+//		// 获取一个资源（PHAsset）
+//		PHAsset *asset = assetsFetchResults[i];
+//		NSLog(@"%@",asset);
+//	}
+	
 	return YES;
 }
 

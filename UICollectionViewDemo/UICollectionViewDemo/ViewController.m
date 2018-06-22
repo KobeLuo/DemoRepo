@@ -59,7 +59,7 @@
         make.left.equalTo(self.view);
         make.top.equalTo(self.view).offset(30);
         make.width.equalTo(self.view);
-        make.height.mas_equalTo(200);
+        make.height.mas_equalTo((self.view.height - 44)/2);
     }];
 }
 
@@ -104,7 +104,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
 
-	CGFloat width = _collectionView.height - 20;
+	CGFloat width = _collectionView.height - 40;
 	CGSize size = CGSizeMake(width, width);
 	return size;
 }
