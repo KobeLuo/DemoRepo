@@ -38,6 +38,9 @@
 		183B6AD520DA9A30009DFD93 /* Form2_4.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B6AD420DA9A30009DFD93 /* Form2_4.m */; };
 		183B6AD820DA9A39009DFD93 /* Form2_5.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B6AD720DA9A39009DFD93 /* Form2_5.m */; };
 		183B6ADB20DAB271009DFD93 /* ditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B6ADA20DAB271009DFD93 /* ditorViewController.m */; };
+		18C0DB8220DE8DE80070BE9B /* CDAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C0DB8120DE8DE70070BE9B /* CDAssets.m */; };
+		18C0DB8820DE90EF0070BE9B /* CDFormCollectionControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C0DB8720DE90EF0070BE9B /* CDFormCollectionControl.m */; };
+		18C0DB8C20DE97D20070BE9B /* CDAlbumsSelectorControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C0DB8B20DE97D20070BE9B /* CDAlbumsSelectorControl.m */; };
 		CD97C2B120DB30E000C9EBDF /* CDPhotoPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD97C2AF20DB30E000C9EBDF /* CDPhotoPickerView.m */; };
 		CDE74BC220D89A1D00A01347 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE74BC120D89A1D00A01347 /* main.m */; };
 		CDE74BC520D89A1D00A01347 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE74BC420D89A1D00A01347 /* AppDelegate.m */; };
@@ -114,6 +117,13 @@
 		183B6AD720DA9A39009DFD93 /* Form2_5.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Form2_5.m; sourceTree = "<group>"; };
 		183B6AD920DAB271009DFD93 /* ditorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ditorViewController.h; sourceTree = "<group>"; };
 		183B6ADA20DAB271009DFD93 /* ditorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ditorViewController.m; sourceTree = "<group>"; };
+		18C0DB8020DE8DE70070BE9B /* CDAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDAssets.h; sourceTree = "<group>"; };
+		18C0DB8120DE8DE70070BE9B /* CDAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDAssets.m; sourceTree = "<group>"; };
+		18C0DB8620DE90EF0070BE9B /* CDFormCollectionControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDFormCollectionControl.h; sourceTree = "<group>"; };
+		18C0DB8720DE90EF0070BE9B /* CDFormCollectionControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CDFormCollectionControl.m; sourceTree = "<group>"; };
+		18C0DB8920DE955D0070BE9B /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		18C0DB8A20DE97D20070BE9B /* CDAlbumsSelectorControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDAlbumsSelectorControl.h; sourceTree = "<group>"; };
+		18C0DB8B20DE97D20070BE9B /* CDAlbumsSelectorControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CDAlbumsSelectorControl.m; sourceTree = "<group>"; };
 		29648A003E6E50E2B18AC4C3 /* Pods-UICollectionViewDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UICollectionViewDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UICollectionViewDemo/Pods-UICollectionViewDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		46E9A8123044195E87148D9B /* Pods-UICollectionViewDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UICollectionViewDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-UICollectionViewDemo/Pods-UICollectionViewDemo.release.xcconfig"; sourceTree = "<group>"; };
 		5CBF8BC6570AAB30D07891CE /* Pods_UICollectionViewDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UICollectionViewDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -309,10 +319,16 @@
 				CDE74BC420D89A1D00A01347 /* AppDelegate.m */,
 				CDE74BC620D89A1D00A01347 /* ViewController.h */,
 				CDE74BC720D89A1D00A01347 /* ViewController.m */,
+				18C0DB8620DE90EF0070BE9B /* CDFormCollectionControl.h */,
+				18C0DB8720DE90EF0070BE9B /* CDFormCollectionControl.m */,
+				18C0DB8A20DE97D20070BE9B /* CDAlbumsSelectorControl.h */,
+				18C0DB8B20DE97D20070BE9B /* CDAlbumsSelectorControl.m */,
 				183B6AD920DAB271009DFD93 /* ditorViewController.h */,
 				183B6ADA20DAB271009DFD93 /* ditorViewController.m */,
 				CDE8A3D420D9E1F100AB867D /* FormBaseCell.h */,
 				CDE8A3D520D9E1F100AB867D /* FormBaseCell.m */,
+				18C0DB8020DE8DE70070BE9B /* CDAssets.h */,
+				18C0DB8120DE8DE70070BE9B /* CDAssets.m */,
 				CD97C2AE20DB30E000C9EBDF /* ImagePicker */,
 				183B6A7C20DA7551009DFD93 /* Forms */,
 				CDE74BD820D8A26400A01347 /* SimpleCollectionViewCell.h */,
@@ -323,6 +339,7 @@
 				CDE74BDC20D8B1FD00A01347 /* SimpleCVLayoutAttr.m */,
 				CDE74BDE20D8E24500A01347 /* UIView+Extension.h */,
 				CDE74BDF20D8E24500A01347 /* UIView+Extension.m */,
+				18C0DB8920DE955D0070BE9B /* PrefixHeader.pch */,
 				CDE74BC920D89A1D00A01347 /* Main.storyboard */,
 				CDE74BCC20D89A1D00A01347 /* Assets.xcassets */,
 				CDE74BCE20D89A1D00A01347 /* LaunchScreen.storyboard */,
@@ -373,6 +390,7 @@
 				TargetAttributes = {
 					CDE74BBC20D89A1D00A01347 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = G75V32X3S4;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -458,6 +476,7 @@
 				183B6AA220DA9171009DFD93 /* Form4_4.m in Sources */,
 				CDE74BE020D8E24500A01347 /* UIView+Extension.m in Sources */,
 				183B6ABA20DA96DE009DFD93 /* Form3_3.m in Sources */,
+				18C0DB8820DE90EF0070BE9B /* CDFormCollectionControl.m in Sources */,
 				183B6A8720DA8CEC009DFD93 /* Form6_1.m in Sources */,
 				183B6ADB20DAB271009DFD93 /* ditorViewController.m in Sources */,
 				CDE74BC820D89A1D00A01347 /* ViewController.m in Sources */,
@@ -474,6 +493,7 @@
 				183B6AA520DA917E009DFD93 /* Form4_5.m in Sources */,
 				183B6ACF20DA9A1C009DFD93 /* Form2_2.m in Sources */,
 				183B6A9020DA8F8D009DFD93 /* Form5_3.m in Sources */,
+				18C0DB8C20DE97D20070BE9B /* CDAlbumsSelectorControl.m in Sources */,
 				CDE74BDA20D8A26400A01347 /* SimpleCollectionViewCell.m in Sources */,
 				183B6A8420DA7582009DFD93 /* Form6_0.m in Sources */,
 				183B6AAB20DA9197009DFD93 /* Form4_7.m in Sources */,
@@ -491,6 +511,7 @@
 				183B6A9920DA9141009DFD93 /* Form4_1.m in Sources */,
 				183B6AC920DA99E6009DFD93 /* Form2_0.m in Sources */,
 				CD97C2B120DB30E000C9EBDF /* CDPhotoPickerView.m in Sources */,
+				18C0DB8220DE8DE80070BE9B /* CDAssets.m in Sources */,
 				183B6A9620DA911F009DFD93 /* Form4_0.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -612,6 +633,9 @@
 			baseConfigurationReference = 29648A003E6E50E2B18AC4C3 /* Pods-UICollectionViewDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = G75V32X3S4;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = UICollectionViewDemo/PrefixHeader.pch;
 				INFOPLIST_FILE = UICollectionViewDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ndrive.works.UICollectionViewDemo;
@@ -624,6 +648,9 @@
 			baseConfigurationReference = 46E9A8123044195E87148D9B /* Pods-UICollectionViewDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = G75V32X3S4;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = UICollectionViewDemo/PrefixHeader.pch;
 				INFOPLIST_FILE = UICollectionViewDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ndrive.works.UICollectionViewDemo;

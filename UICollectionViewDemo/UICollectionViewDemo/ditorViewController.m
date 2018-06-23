@@ -8,7 +8,10 @@
 
 #import "ditorViewController.h"
 
-@interface ditorViewController ()
+@interface ditorViewController () {
+    
+    
+}
 
 @end
 

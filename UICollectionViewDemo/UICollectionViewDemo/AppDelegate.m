@@ -17,6 +17,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
 	// Override point for customization after application launch.
 	
 	// 获取所有资源的集合，并按资源的创建时间排序
