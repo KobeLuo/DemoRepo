@@ -7,15 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CDAlbumShowControl.h"
 
 typedef void (^CDAlbumDidChangeInvoke)(PHCollection *);
 
 @interface CDAlbumsSelectorControl : NSObject
 
-- (instancetype)initWith:(UICollectionViewFlowLayout *)layout;
-
+@property (nonatomic, readonly) UIView *view;
+//相册选择
 @property (nonatomic, readonly) UICollectionView *collectionView;
 
-- (void)observeAlbumDidChange:(CDAlbumDidChangeInvoke)invoke;
+- (instancetype)initWith:(UICollectionViewFlowLayout *)layout
+               superView:(UIView *)superView;
 
+- (void)loadAlbums;
+- (void)observeAlbumDidChange:(CDAlbumDidChangeInvoke)invoke;
+- (void)observeAssetsDidChange:(photosDidchangeInvoke)invoke;
+@end
+
+
+@interface CDAlbumsFlowLayout: UICollectionViewFlowLayout
 @end

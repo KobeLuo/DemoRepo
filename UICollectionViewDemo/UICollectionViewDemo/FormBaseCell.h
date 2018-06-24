@@ -19,4 +19,6 @@
 @property (nonatomic) UIImageView *image6;
 
 @property (nonatomic) NSInteger imageCount;
+
+- (void)loadAssets:(NSArray *)assets;
 @end

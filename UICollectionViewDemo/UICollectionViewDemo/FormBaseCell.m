@@ -51,15 +51,14 @@
     view.layer.shadowOpacity = 0.5;
     view.clipsToBounds = NO;
     NSArray *views = @[_image1,_image2,_image3,_image4,_image5,_image6];
-    NSArray *colors = @[[UIColor redColor],[UIColor blueColor],[UIColor yellowColor],[UIColor purpleColor],[UIColor magentaColor],[UIColor grayColor]];
     
-    NSInteger index = 0;
     for (UIView *view in views) {
         
-        view.backgroundColor = colors[index ++];
         [self.contentView addSubview:view];
+        view.contentMode = UIViewContentModeScaleAspectFill;
+        view.clipsToBounds = YES;
     }
-    
+
 	[self setSubviewLayout];
 }
 
@@ -75,5 +74,29 @@
 	}
 }
 
+- (void)loadAssets:(NSArray *)assets {
+    
+    _image5.backgroundColor = [UIColor redColor];
+    
+    NSInteger index = 0;
+    for (UIImageView *imageV in @[_image1,_image2,_image3,_image4,_image5,_image6]) {
+        
+        if (assets.count > index) {
+            
+            imageV.image = [CDAssets getImageFrom:assets[index] size:imageV.size];
+            
+            NSLog(@"imageV.frame:%@",[NSValue valueWithCGRect:imageV.frame]);
+        }else {
+            
+            break;
+        }
+        index ++;
+    }
+}
 
+- (void)prepareForReuse {
+    
+    [super prepareForReuse];
+    for (UIImageView *img in @[_image1,_image2,_image3,_image4,_image5,_image6]) { img.image = nil; }
+}
 @end

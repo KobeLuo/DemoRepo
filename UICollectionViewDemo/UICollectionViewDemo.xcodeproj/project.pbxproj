@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0CB7CF4E5FFE8F5C4651C4AA /* Pods_UICollectionViewDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CBF8BC6570AAB30D07891CE /* Pods_UICollectionViewDemo.framework */; };
+		1800F53F20DF20E6008979FE /* CDAlbumShowControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1800F53E20DF20E6008979FE /* CDAlbumShowControl.m */; };
+		1800F54220DF25C4008979FE /* CDShowPhotosCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1800F54120DF25C4008979FE /* CDShowPhotosCell.m */; };
 		183B6A8420DA7582009DFD93 /* Form6_0.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B6A8320DA7582009DFD93 /* Form6_0.m */; };
 		183B6A8720DA8CEC009DFD93 /* Form6_1.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B6A8620DA8CEC009DFD93 /* Form6_1.m */; };
 		183B6A8A20DA8D8D009DFD93 /* Form5_0.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B6A8920DA8D8D009DFD93 /* Form5_0.m */; };
@@ -38,10 +40,10 @@
 		183B6AD520DA9A30009DFD93 /* Form2_4.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B6AD420DA9A30009DFD93 /* Form2_4.m */; };
 		183B6AD820DA9A39009DFD93 /* Form2_5.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B6AD720DA9A39009DFD93 /* Form2_5.m */; };
 		183B6ADB20DAB271009DFD93 /* ditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B6ADA20DAB271009DFD93 /* ditorViewController.m */; };
+		18A0268520DF766C00A210CB /* Form1_0.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A0268420DF766C00A210CB /* Form1_0.m */; };
 		18C0DB8220DE8DE80070BE9B /* CDAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C0DB8120DE8DE70070BE9B /* CDAssets.m */; };
 		18C0DB8820DE90EF0070BE9B /* CDFormCollectionControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C0DB8720DE90EF0070BE9B /* CDFormCollectionControl.m */; };
 		18C0DB8C20DE97D20070BE9B /* CDAlbumsSelectorControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C0DB8B20DE97D20070BE9B /* CDAlbumsSelectorControl.m */; };
-		CD97C2B120DB30E000C9EBDF /* CDPhotoPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD97C2AF20DB30E000C9EBDF /* CDPhotoPickerView.m */; };
 		CDE74BC220D89A1D00A01347 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE74BC120D89A1D00A01347 /* main.m */; };
 		CDE74BC520D89A1D00A01347 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE74BC420D89A1D00A01347 /* AppDelegate.m */; };
 		CDE74BC820D89A1D00A01347 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE74BC720D89A1D00A01347 /* ViewController.m */; };
@@ -57,6 +59,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1800F53D20DF20E6008979FE /* CDAlbumShowControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDAlbumShowControl.h; sourceTree = "<group>"; };
+		1800F53E20DF20E6008979FE /* CDAlbumShowControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CDAlbumShowControl.m; sourceTree = "<group>"; };
+		1800F54020DF25C4008979FE /* CDShowPhotosCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDShowPhotosCell.h; sourceTree = "<group>"; };
+		1800F54120DF25C4008979FE /* CDShowPhotosCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CDShowPhotosCell.m; sourceTree = "<group>"; };
 		183B6A8220DA7582009DFD93 /* Form6_0.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Form6_0.h; sourceTree = "<group>"; };
 		183B6A8320DA7582009DFD93 /* Form6_0.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Form6_0.m; sourceTree = "<group>"; };
 		183B6A8520DA8CEC009DFD93 /* Form6_1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Form6_1.h; sourceTree = "<group>"; };
@@ -117,6 +123,8 @@
 		183B6AD720DA9A39009DFD93 /* Form2_5.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Form2_5.m; sourceTree = "<group>"; };
 		183B6AD920DAB271009DFD93 /* ditorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ditorViewController.h; sourceTree = "<group>"; };
 		183B6ADA20DAB271009DFD93 /* ditorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ditorViewController.m; sourceTree = "<group>"; };
+		18A0268320DF766C00A210CB /* Form1_0.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Form1_0.h; sourceTree = "<group>"; };
+		18A0268420DF766C00A210CB /* Form1_0.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Form1_0.m; sourceTree = "<group>"; };
 		18C0DB8020DE8DE70070BE9B /* CDAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDAssets.h; sourceTree = "<group>"; };
 		18C0DB8120DE8DE70070BE9B /* CDAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDAssets.m; sourceTree = "<group>"; };
 		18C0DB8620DE90EF0070BE9B /* CDFormCollectionControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDFormCollectionControl.h; sourceTree = "<group>"; };
@@ -127,8 +135,6 @@
 		29648A003E6E50E2B18AC4C3 /* Pods-UICollectionViewDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UICollectionViewDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UICollectionViewDemo/Pods-UICollectionViewDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		46E9A8123044195E87148D9B /* Pods-UICollectionViewDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UICollectionViewDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-UICollectionViewDemo/Pods-UICollectionViewDemo.release.xcconfig"; sourceTree = "<group>"; };
 		5CBF8BC6570AAB30D07891CE /* Pods_UICollectionViewDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UICollectionViewDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CD97C2AF20DB30E000C9EBDF /* CDPhotoPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDPhotoPickerView.m; sourceTree = "<group>"; };
-		CD97C2B020DB30E000C9EBDF /* CDPhotoPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDPhotoPickerView.h; sourceTree = "<group>"; };
 		CDE74BBD20D89A1D00A01347 /* UICollectionViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UICollectionViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDE74BC120D89A1D00A01347 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CDE74BC320D89A1D00A01347 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -166,6 +172,7 @@
 		183B6A7C20DA7551009DFD93 /* Forms */ = {
 			isa = PBXGroup;
 			children = (
+				18A0268220DF765A00A210CB /* Form1 */,
 				183B6A7D20DA7551009DFD93 /* Form2 */,
 				183B6A7E20DA7551009DFD93 /* Form3 */,
 				183B6A8120DA7551009DFD93 /* From4 */,
@@ -268,6 +275,15 @@
 			path = From4;
 			sourceTree = "<group>";
 		};
+		18A0268220DF765A00A210CB /* Form1 */ = {
+			isa = PBXGroup;
+			children = (
+				18A0268320DF766C00A210CB /* Form1_0.h */,
+				18A0268420DF766C00A210CB /* Form1_0.m */,
+			);
+			path = Form1;
+			sourceTree = "<group>";
+		};
 		1ECEEDC3BC704C29F8BB965B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,15 +299,6 @@
 				5CBF8BC6570AAB30D07891CE /* Pods_UICollectionViewDemo.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		CD97C2AE20DB30E000C9EBDF /* ImagePicker */ = {
-			isa = PBXGroup;
-			children = (
-				CD97C2B020DB30E000C9EBDF /* CDPhotoPickerView.h */,
-				CD97C2AF20DB30E000C9EBDF /* CDPhotoPickerView.m */,
-			);
-			path = ImagePicker;
 			sourceTree = "<group>";
 		};
 		CDE74BB420D89A1D00A01347 = {
@@ -323,13 +330,16 @@
 				18C0DB8720DE90EF0070BE9B /* CDFormCollectionControl.m */,
 				18C0DB8A20DE97D20070BE9B /* CDAlbumsSelectorControl.h */,
 				18C0DB8B20DE97D20070BE9B /* CDAlbumsSelectorControl.m */,
+				1800F53D20DF20E6008979FE /* CDAlbumShowControl.h */,
+				1800F53E20DF20E6008979FE /* CDAlbumShowControl.m */,
+				1800F54020DF25C4008979FE /* CDShowPhotosCell.h */,
+				1800F54120DF25C4008979FE /* CDShowPhotosCell.m */,
 				183B6AD920DAB271009DFD93 /* ditorViewController.h */,
 				183B6ADA20DAB271009DFD93 /* ditorViewController.m */,
 				CDE8A3D420D9E1F100AB867D /* FormBaseCell.h */,
 				CDE8A3D520D9E1F100AB867D /* FormBaseCell.m */,
 				18C0DB8020DE8DE70070BE9B /* CDAssets.h */,
 				18C0DB8120DE8DE70070BE9B /* CDAssets.m */,
-				CD97C2AE20DB30E000C9EBDF /* ImagePicker */,
 				183B6A7C20DA7551009DFD93 /* Forms */,
 				CDE74BD820D8A26400A01347 /* SimpleCollectionViewCell.h */,
 				CDE74BD920D8A26400A01347 /* SimpleCollectionViewCell.m */,
@@ -483,6 +493,7 @@
 				CDE74BDD20D8B1FD00A01347 /* SimpleCVLayoutAttr.m in Sources */,
 				183B6AC620DA9710009DFD93 /* Form3_7.m in Sources */,
 				183B6AC020DA96F9009DFD93 /* Form3_5.m in Sources */,
+				1800F53F20DF20E6008979FE /* CDAlbumShowControl.m in Sources */,
 				183B6AB120DA96B6009DFD93 /* Form3_0.m in Sources */,
 				183B6AD820DA9A39009DFD93 /* Form2_5.m in Sources */,
 				183B6A8A20DA8D8D009DFD93 /* Form5_0.m in Sources */,
@@ -495,6 +506,7 @@
 				183B6A9020DA8F8D009DFD93 /* Form5_3.m in Sources */,
 				18C0DB8C20DE97D20070BE9B /* CDAlbumsSelectorControl.m in Sources */,
 				CDE74BDA20D8A26400A01347 /* SimpleCollectionViewCell.m in Sources */,
+				18A0268520DF766C00A210CB /* Form1_0.m in Sources */,
 				183B6A8420DA7582009DFD93 /* Form6_0.m in Sources */,
 				183B6AAB20DA9197009DFD93 /* Form4_7.m in Sources */,
 				183B6AA820DA918A009DFD93 /* Form4_6.m in Sources */,
@@ -510,7 +522,7 @@
 				183B6AD220DA9A26009DFD93 /* Form2_3.m in Sources */,
 				183B6A9920DA9141009DFD93 /* Form4_1.m in Sources */,
 				183B6AC920DA99E6009DFD93 /* Form2_0.m in Sources */,
-				CD97C2B120DB30E000C9EBDF /* CDPhotoPickerView.m in Sources */,
+				1800F54220DF25C4008979FE /* CDShowPhotosCell.m in Sources */,
 				18C0DB8220DE8DE80070BE9B /* CDAssets.m in Sources */,
 				183B6A9620DA911F009DFD93 /* Form4_0.m in Sources */,
 			);

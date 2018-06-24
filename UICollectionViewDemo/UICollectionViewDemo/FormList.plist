@@ -2,6 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Form0</key>
+	<array/>
+	<key>Form1</key>
+	<array>
+		<string>Form1_0</string>
+		<string>Form1_1</string>
+		<string>Form1_2</string>
+		<string>Form1_3</string>
+		<string>Form1_4</string>
+		<string>Form1_5</string>
+	</array>
 	<key>Form2</key>
 	<array>
 		<string>Form2_0</string>

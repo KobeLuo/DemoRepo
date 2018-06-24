@@ -31,7 +31,7 @@
     
     [self.image3 mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.top.equalTo(self.image1.mas_bottom);
+        make.top.equalTo(self.image1.mas_top);
         make.right.equalTo(view.mas_right);
         make.width.equalTo(self.image1);
         make.height.equalTo(self.image1);

@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "CDFormCollectionControl.h"
+#import "CDAlbumsSelectorControl.h"
 
 #import "SimpleCVLayoutAttr.h"
 #import "UIView+Extension.h"
@@ -22,6 +23,7 @@
     NSInteger _imageCount;
     
     CDFormCollectionControl *_formControl;
+    CDAlbumsSelectorControl *_selectedControl;
 }
 
 @end
@@ -34,12 +36,16 @@
 	_sectionCount = 1;
     _imageCount = 0;
     self.view.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];
-    [self btnClicked:nil];
-	
-	[self initialCollectionView];
+
+	//顶部样式
+	[self loadFormControlAndSubviews];
+    //下部相册选择器
+    [self loadAlbumSelectControl];
+    
+    [_selectedControl loadAlbums];
 }
 
-- (void)initialCollectionView {
+- (void)loadFormControlAndSubviews {
 	
 	// 设置 flowLayout
 	SimpleCVLayoutAttr *flowLayout = [[SimpleCVLayoutAttr alloc] init];
@@ -53,17 +59,36 @@
         make.left.equalTo(self.view);
         make.top.equalTo(self.view).offset(0);
         make.width.equalTo(self.view);
-        make.height.mas_equalTo((self.view.height - 44)/2);
+        make.height.mas_equalTo((self.view.height - 60)/2);
+    }];
+}
+
+- (void)loadAlbumSelectControl {
+    
+    CDAlbumsFlowLayout *layout = [CDAlbumsFlowLayout new];
+    _selectedControl = [[CDAlbumsSelectorControl alloc] initWith:layout superView:self.view];
+    [self.view addSubview:_selectedControl.collectionView];
+    
+    [_selectedControl.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.left.equalTo(self.view);
+        make.bottom.equalTo(self.view);
+        make.right.equalTo(self.view);
+        make.top.equalTo(_formControl.collectionView.mas_bottom);
+    }];
+    //更改相册时，clean FormCollection
+    
+    @WeakObj(self);
+    [_selectedControl observeAlbumDidChange:^(PHCollection *collection) {
+        
+        @StrongObj(self);
+        [self->_formControl formDidChanged:[NSArray new]];
     }];
     
-    [self btnClicked:nil];
+    [_selectedControl observeAssetsDidChange:^(NSArray<PHAsset *> *assets) {
+        
+        @StrongObj(self);
+        [self->_formControl formDidChanged:assets];
+    }];
 }
-
-- (IBAction)btnClicked:(UIButton *)sender {
-    
-    NSInteger count = 2 + arc4random()%4;
-    
-    [_formControl formDidChanged:count];
-}
-
 @end

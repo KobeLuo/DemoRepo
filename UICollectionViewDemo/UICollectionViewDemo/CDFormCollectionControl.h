@@ -14,6 +14,6 @@
 - (instancetype)initWith:(UICollectionViewFlowLayout *)layout;
 @property (nonatomic, readonly) UICollectionView *collectionView;
 
-- (void)formDidChanged:(NSInteger)count;
+- (void)formDidChanged:(NSArray *)assets;
 
 @end

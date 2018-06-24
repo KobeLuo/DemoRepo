@@ -10,6 +10,7 @@
 #import "SimpleCollectionViewCell.h"
 #import "FormBaseCell.h"
 
+
 @interface CDFormCollectionControl() <
 UICollectionViewDataSource,
 UICollectionViewDelegate,
@@ -17,6 +18,10 @@ UICollectionViewDelegateFlowLayout> {
     
     NSInteger _rowCount;
     NSInteger _imageCount;
+    
+    NSArray *_selectedAssets;
+    
+    UIImageView *_placeHolderView;
 }
 @end
 
@@ -36,6 +41,19 @@ UICollectionViewDelegateFlowLayout> {
     _collectionView.dataSource = self;
     // 注册 cell
     [self registerCell];
+    
+    _placeHolderView = [[UIImageView alloc] init];
+    _placeHolderView.image = [UIImage imageNamed:@"picCollage"];
+    [_collectionView addSubview:_placeHolderView];
+    
+    CGFloat width = 100 * SCREEN_WIDTH/375.;
+    [_placeHolderView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.centerX.equalTo(_collectionView.mas_centerX);
+        make.centerY.equalTo(_collectionView.mas_centerY);
+        make.width.mas_equalTo(width);
+        make.height.mas_equalTo(width);
+    }];
 }
 
 - (void)registerCell {
@@ -53,9 +71,14 @@ UICollectionViewDelegateFlowLayout> {
     }
 }
 
-- (void)formDidChanged:(NSInteger)count {
+- (void)formDidChanged:(NSArray *)assets {
     
-    _imageCount = count;
+    _selectedAssets = assets.copy;
+    if (_selectedAssets.count == 1) {
+        
+        _selectedAssets = [NSArray arrayWithObjects:_selectedAssets.firstObject,_selectedAssets.firstObject, nil];
+    }
+    _imageCount = assets.count;
     NSString *path = [[NSBundle mainBundle] pathForResource:@"FormList" ofType:@"plist"];
     NSDictionary *info = [NSDictionary dictionaryWithContentsOfFile:path];
     
@@ -63,6 +86,8 @@ UICollectionViewDelegateFlowLayout> {
     NSArray *array = info[key];
     
     _rowCount = array.count;
+    
+    _placeHolderView.hidden = _rowCount > 0;
     
     [self.collectionView reloadData];
 }
@@ -81,9 +106,7 @@ UICollectionViewDelegateFlowLayout> {
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     UICollectionViewCell *cell = [self loadCellWithIndexPath:indexPath];
-    //    SimpleCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SimpleCollectionViewCell" forIndexPath:indexPath];
-    //    cell.backgroundColor = [UIColor blueColor];
-    
+
     return cell;
 }
 
@@ -150,7 +173,8 @@ UICollectionViewDelegateFlowLayout> {
     NSString *formClassStr = [@"Form" stringByAppendingFormat:@"%ld_%ld",_imageCount,indexPath.row];
     //    NSString *formClassStr = [@"Form" stringByAppendingFormat:@"%ld_%ld",_imageCount,0];
     FormBaseCell *cell = (FormBaseCell *)[_collectionView dequeueReusableCellWithReuseIdentifier:formClassStr forIndexPath:indexPath];
-    [cell setImageCount:_rowCount];
+    [cell setImageCount:_selectedAssets.count];
+    [cell loadAssets:_selectedAssets];
     
     return cell;
 }
