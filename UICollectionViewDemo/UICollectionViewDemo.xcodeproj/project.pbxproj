@@ -41,6 +41,7 @@
 		183B6AD820DA9A39009DFD93 /* Form2_5.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B6AD720DA9A39009DFD93 /* Form2_5.m */; };
 		183B6ADB20DAB271009DFD93 /* ditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B6ADA20DAB271009DFD93 /* ditorViewController.m */; };
 		18A0268520DF766C00A210CB /* Form1_0.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A0268420DF766C00A210CB /* Form1_0.m */; };
+		18A0268820DF99A300A210CB /* CDAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A0268720DF99A300A210CB /* CDAlbumCell.m */; };
 		18C0DB8220DE8DE80070BE9B /* CDAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C0DB8120DE8DE70070BE9B /* CDAssets.m */; };
 		18C0DB8820DE90EF0070BE9B /* CDFormCollectionControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C0DB8720DE90EF0070BE9B /* CDFormCollectionControl.m */; };
 		18C0DB8C20DE97D20070BE9B /* CDAlbumsSelectorControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C0DB8B20DE97D20070BE9B /* CDAlbumsSelectorControl.m */; };
@@ -125,6 +126,8 @@
 		183B6ADA20DAB271009DFD93 /* ditorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ditorViewController.m; sourceTree = "<group>"; };
 		18A0268320DF766C00A210CB /* Form1_0.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Form1_0.h; sourceTree = "<group>"; };
 		18A0268420DF766C00A210CB /* Form1_0.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Form1_0.m; sourceTree = "<group>"; };
+		18A0268620DF99A300A210CB /* CDAlbumCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDAlbumCell.h; sourceTree = "<group>"; };
+		18A0268720DF99A300A210CB /* CDAlbumCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CDAlbumCell.m; sourceTree = "<group>"; };
 		18C0DB8020DE8DE70070BE9B /* CDAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDAssets.h; sourceTree = "<group>"; };
 		18C0DB8120DE8DE70070BE9B /* CDAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDAssets.m; sourceTree = "<group>"; };
 		18C0DB8620DE90EF0070BE9B /* CDFormCollectionControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDFormCollectionControl.h; sourceTree = "<group>"; };
@@ -332,6 +335,8 @@
 				18C0DB8B20DE97D20070BE9B /* CDAlbumsSelectorControl.m */,
 				1800F53D20DF20E6008979FE /* CDAlbumShowControl.h */,
 				1800F53E20DF20E6008979FE /* CDAlbumShowControl.m */,
+				18A0268620DF99A300A210CB /* CDAlbumCell.h */,
+				18A0268720DF99A300A210CB /* CDAlbumCell.m */,
 				1800F54020DF25C4008979FE /* CDShowPhotosCell.h */,
 				1800F54120DF25C4008979FE /* CDShowPhotosCell.m */,
 				183B6AD920DAB271009DFD93 /* ditorViewController.h */,
@@ -514,6 +519,7 @@
 				183B6AD520DA9A30009DFD93 /* Form2_4.m in Sources */,
 				CDE8A3D620D9E1F100AB867D /* FormBaseCell.m in Sources */,
 				183B6A9320DA8FC0009DFD93 /* Form5_2.m in Sources */,
+				18A0268820DF99A300A210CB /* CDAlbumCell.m in Sources */,
 				183B6AB420DA96C6009DFD93 /* Form3_1.m in Sources */,
 				CDE74BC220D89A1D00A01347 /* main.m in Sources */,
 				183B6ACC20DA9A0F009DFD93 /* Form2_1.m in Sources */,

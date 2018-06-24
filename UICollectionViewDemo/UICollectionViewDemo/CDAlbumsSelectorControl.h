@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CDAlbumShowControl.h"
-
+#import "CDAlbumCell.h"
 typedef void (^CDAlbumDidChangeInvoke)(PHCollection *);
 
 @interface CDAlbumsSelectorControl : NSObject
@@ -25,6 +25,3 @@ typedef void (^CDAlbumDidChangeInvoke)(PHCollection *);
 - (void)observeAssetsDidChange:(photosDidchangeInvoke)invoke;
 @end
 
-
-@interface CDAlbumsFlowLayout: UICollectionViewFlowLayout
-@end

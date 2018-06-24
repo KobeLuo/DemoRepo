@@ -65,7 +65,7 @@
 
 - (void)loadAlbumSelectControl {
     
-    CDAlbumsFlowLayout *layout = [CDAlbumsFlowLayout new];
+    CDAlbumLayout *layout = [CDAlbumLayout new];
     _selectedControl = [[CDAlbumsSelectorControl alloc] initWith:layout superView:self.view];
     [self.view addSubview:_selectedControl.collectionView];
     

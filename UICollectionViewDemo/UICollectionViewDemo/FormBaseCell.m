@@ -84,8 +84,6 @@
         if (assets.count > index) {
             
             imageV.image = [CDAssets getImageFrom:assets[index] size:imageV.size];
-            
-            NSLog(@"imageV.frame:%@",[NSValue valueWithCGRect:imageV.frame]);
         }else {
             
             break;

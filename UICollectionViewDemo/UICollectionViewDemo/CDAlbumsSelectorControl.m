@@ -9,6 +9,10 @@
 #import "CDAlbumsSelectorControl.h"
 #import "CDAssets.h"
 #import "SimpleCollectionViewCell.h"
+#import "CDAlbumCell.h"
+
+#define BOTTOM_BAR_HEIGHT 60
+#define ALBUM_PICKER_HEIGHT 130
 
 @interface CDAlbumsSelectorControl() <
 UICollectionViewDataSource,
@@ -27,6 +31,9 @@ UICollectionViewDelegateFlowLayout> {
     PHCollection *_currentCollection;
     
     CDAlbumShowControl *_photoControl;
+    
+    UIView *_superView;
+    UIView *_shadowView;
 }
 
 @end
@@ -41,13 +48,26 @@ UICollectionViewDelegateFlowLayout> {
         _view = [UIView new];
         _view.backgroundColor = superView.backgroundColor;
         [superView addSubview:_view];
+        _superView = superView;
         
-        [self loadMenuBarView];
         //相册选取collectionView;
-        [self initialCollectionView:layout];
-        [_view addSubview:_collectionView];
+        [self loadCollectionView:layout];
         //照片展示
         [self loadPhotosPickControl];
+        
+        _shadowView = [[UIView alloc] init];
+        _shadowView.backgroundColor = HEX_RGBA(0x000000, 0);
+        _shadowView.userInteractionEnabled = NO;
+        [_superView addSubview:_shadowView];
+        
+        [_shadowView mas_makeConstraints:^(MASConstraintMaker *make) {
+            
+            make.center.equalTo(superView);
+            make.size.equalTo(superView);
+        }];
+        
+        //底部menubar.
+        [self loadMenuBarView];
     }
     return  self;
 }
@@ -56,7 +76,8 @@ UICollectionViewDelegateFlowLayout> {
     
     _menuBarView = [UIView new];
     _menuBarView.backgroundColor = [UIColor whiteColor];
-    [_view addSubview:_menuBarView];
+    [_superView addSubview:_menuBarView];
+    [_superView bringSubviewToFront:_menuBarView];
     
     UIButton *closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [closeBtn setTitle:@"CLOSE" forState:UIControlStateNormal];
@@ -81,7 +102,7 @@ UICollectionViewDelegateFlowLayout> {
         make.left.equalTo(_view.mas_left);
         make.bottom.equalTo(_view.mas_bottom);
         make.right.equalTo(_view.mas_right);
-        make.height.mas_equalTo(60);
+        make.height.mas_equalTo(BOTTOM_BAR_HEIGHT);
     }];
     
     [closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -101,13 +122,23 @@ UICollectionViewDelegateFlowLayout> {
     }];
 }
 
-- (void)initialCollectionView:(UICollectionViewFlowLayout *)layout {
+- (void)loadCollectionView:(UICollectionViewFlowLayout *)layout {
     
     _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
+    _collectionView.backgroundColor = [UIColor whiteColor];
     // 注册 cell
-    [_collectionView registerClass:[SimpleCollectionViewCell class] forCellWithReuseIdentifier:@"SimpleCollectionViewCell"];
+    [_collectionView registerClass:[CDAlbumCell class] forCellWithReuseIdentifier:@"CDAlbumCell"];
+    [_superView addSubview:_collectionView];
+    
+    [_collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.top.equalTo(_view.mas_bottom);
+        make.left.equalTo(_view);
+        make.right.equalTo(_view);
+        make.height.mas_equalTo(ALBUM_PICKER_HEIGHT);
+    }];
 }
 
 - (void)loadPhotosPickControl {
@@ -126,7 +157,7 @@ UICollectionViewDelegateFlowLayout> {
         make.left.equalTo(_view.mas_left);
         make.right.equalTo(_view.mas_right);
         make.top.equalTo(_view.mas_top);
-        make.bottom.equalTo(_menuBarView.mas_top);
+        make.bottom.equalTo(_view).with.offset(-BOTTOM_BAR_HEIGHT);
     }];
 }
 
@@ -138,6 +169,34 @@ UICollectionViewDelegateFlowLayout> {
 - (void)photoPickerAction:(UIButton *)sender {
     
     sender.selected = !sender.selected;
+    
+    [self showAlbumsCollectionView:sender.selected];
+}
+
+- (void)showAlbumsCollectionView:(BOOL)show {
+    
+    CGFloat alpha = 0.;
+    CGFloat offset = 0;
+    BOOL interaction = NO;
+    if (show) {
+        
+        alpha = 0.3;
+        offset = - (BOTTOM_BAR_HEIGHT + ALBUM_PICKER_HEIGHT);
+        interaction = YES;
+        
+        [_collectionView reloadData];
+    }
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        
+        _shadowView.backgroundColor = HEX_RGBA(0x000000, alpha);
+        _shadowView.userInteractionEnabled = interaction;
+        
+        [_collectionView mas_updateConstraints:^(MASConstraintMaker *make) {
+
+            make.top.equalTo(_view.mas_bottom).with.offset(offset);
+        }];
+    }];
 }
 
 - (void)updatePhotoPickerBtnTitleWith:(PHCollection *)collection {
@@ -159,8 +218,14 @@ UICollectionViewDelegateFlowLayout> {
     
     _albums = [self filterEmptyAlbum:[CDAssets getAllAlbums]];
     
-    [_photoControl albumDidChange:_albums[0]];
-    [self updatePhotoPickerBtnTitleWith:_albums[0]];
+    [self didPickerAlbum:_albums[0]];
+}
+
+- (void)didPickerAlbum:(PHAssetCollection *)cln {
+    
+    _currentCollection = cln;
+    [_photoControl albumDidChange:_currentCollection];
+    [self updatePhotoPickerBtnTitleWith:_currentCollection];
 }
 
 - (NSArray *)filterEmptyAlbum:(NSArray *)albums {
@@ -202,8 +267,13 @@ UICollectionViewDelegateFlowLayout> {
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    SimpleCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SimpleCollectionViewCell" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor blueColor];
+    CDAlbumCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CDAlbumCell" forIndexPath:indexPath];
+    
+    if (_albums.count > indexPath.row) {
+    
+        PHAssetCollection *cln = _albums[indexPath.row];
+        [cell loadAssets:cln didSelected:(cln == _currentCollection)];
+    }
     
     return cell;
 }
@@ -215,7 +285,7 @@ UICollectionViewDelegateFlowLayout> {
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    CGFloat width = _collectionView.height - 40;
+    CGFloat width = _collectionView.height - 20;
     CGSize size = CGSizeMake(width, width);
     return size;
 }
@@ -229,10 +299,12 @@ UICollectionViewDelegateFlowLayout> {
     
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     
-    if (_invoke) {
-        
-        _invoke(_albums[indexPath.row]);
-    }
+    [self didPickerAlbum:_albums[indexPath.row]];
+    
+    _photoPickerBtn.selected = !_photoPickerBtn.selected;
+    [self showAlbumsCollectionView:_photoPickerBtn.selected];
+    
+    if (_invoke) {  _invoke(_currentCollection); }
 }
 
 
@@ -242,21 +314,4 @@ UICollectionViewDelegateFlowLayout> {
 
 
 
-@implementation CDAlbumsFlowLayout
-
-- (instancetype)init {
-    
-    if (!(self = [super init])) { return nil; }
-    
-    //    self.minimumInteritemSpacing = 40;
-    self.minimumLineSpacing = 10;
-    self.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
-    self.itemSize = CGSizeMake(10, 100);
-    self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    
-    return self;
-}
-
-
-@end
 
