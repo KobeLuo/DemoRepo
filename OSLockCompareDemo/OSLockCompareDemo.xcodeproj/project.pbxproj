@@ -13,7 +13,7 @@
 		4AD850642192E88500B36B68 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AD850622192E88500B36B68 /* Main.storyboard */; };
 		4AD850702192E88500B36B68 /* OSLockCompareDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8506F2192E88500B36B68 /* OSLockCompareDemoTests.swift */; };
 		4AD8507B2192E88500B36B68 /* OSLockCompareDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8507A2192E88500B36B68 /* OSLockCompareDemoUITests.swift */; };
-		4AD850892192E8A800B36B68 /* OSSingleThreadCompare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD850882192E8A800B36B68 /* OSSingleThreadCompare.swift */; };
+		4AD850892192E8A800B36B68 /* OSLockCompare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD850882192E8A800B36B68 /* OSLockCompare.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +47,7 @@
 		4AD850762192E88500B36B68 /* OSLockCompareDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OSLockCompareDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AD8507A2192E88500B36B68 /* OSLockCompareDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLockCompareDemoUITests.swift; sourceTree = "<group>"; };
 		4AD8507C2192E88500B36B68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4AD850882192E8A800B36B68 /* OSSingleThreadCompare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSSingleThreadCompare.swift; sourceTree = "<group>"; };
+		4AD850882192E8A800B36B68 /* OSLockCompare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLockCompare.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +100,7 @@
 			children = (
 				4AD8505C2192E88400B36B68 /* AppDelegate.swift */,
 				4AD8505E2192E88400B36B68 /* ViewController.swift */,
-				4AD850882192E8A800B36B68 /* OSSingleThreadCompare.swift */,
+				4AD850882192E8A800B36B68 /* OSLockCompare.swift */,
 				4AD850602192E88500B36B68 /* Assets.xcassets */,
 				4AD850622192E88500B36B68 /* Main.storyboard */,
 				4AD850652192E88500B36B68 /* Info.plist */,
@@ -258,7 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AD8505F2192E88400B36B68 /* ViewController.swift in Sources */,
-				4AD850892192E8A800B36B68 /* OSSingleThreadCompare.swift in Sources */,
+				4AD850892192E8A800B36B68 /* OSLockCompare.swift in Sources */,
 				4AD8505D2192E88400B36B68 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -810,6 +810,8 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="mtcf" destination="wP6-gx-wOX" id="69Q-LJ-EM4"/>
+                        <outlet property="mttf" destination="XHK-ws-9dJ" id="WPj-os-6kP"/>
                         <outlet property="startMultiThreadTest" destination="c1r-BP-HlE" id="SXz-At-HpW"/>
                         <outlet property="stcf" destination="eCa-6A-uaL" id="y1i-cn-kwn"/>
                         <outlet property="sttf" destination="Maz-T1-vcp" id="gdx-is-g9a"/>

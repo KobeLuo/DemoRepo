@@ -33,16 +33,29 @@ class ViewController: NSViewController {
         let testCount = Int(sttf.stringValue)
         sender.isEnabled = false
         
-        if OSSingleThreadCompare.startThreadCompare(testCount!) {
+        if OSLockCompare.startThreadCompare(testCount!) {
             
             sender.isEnabled = true
         }
     }
     
     
-    @IBAction func startMultiThreadTest(_ sender: Any) {
+    @IBAction func startMultiThreadTest(_ sender: NSButton) {
         
+        let testCount = Int(mttf.stringValue)
+        let threadCnt = Int(mtcf.stringValue)
+        sender.isEnabled = false
         
+        OSLockCompare.startMultiThreadCompare(testCount!,
+                                              threadCount: threadCnt!) { (value) in
+                                                if value {
+                                                    
+                                                    DispatchQueue.main.async {
+                                                        
+                                                        sender.isEnabled = true
+                                                    }
+                                                }
+        }
     }
 }
 
