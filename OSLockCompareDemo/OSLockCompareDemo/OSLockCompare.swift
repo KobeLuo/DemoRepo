@@ -211,6 +211,7 @@ class OSLockCompare {
             let start = CACurrentMediaTime()
             
             sema.wait()
+            //如果要去掉上下文，则注释该print
             print("index: \(index) ")
             sema.signal()
             
