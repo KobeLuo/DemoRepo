@@ -29,7 +29,7 @@ class OSLockCompare {
     var repeatTimes = 1
     var treadCount = 1
     
-    var timeCosts = [OSLockType : Int]()
+    var timeCosts = [OSLockType : Double]()
     
     var splinLock = OS_SPINLOCK_INIT
     var unfair = os_unfair_lock()
@@ -130,11 +130,24 @@ class OSLockCompare {
         testNSRecusiveLock()
         testOSUnfairLock()
     }
-    
+
     private func recordTimeFor(type: OSLockType, time: Double) {
         
+        if Thread.isMainThread == false {
+            
+            DispatchQueue.main.sync {
+                self.recordTimeOnUniqueue(type: type, time: time)
+            }
+        }else {
+            
+            self.recordTimeOnUniqueue(type: type, time: time)
+        }
+    }
+    
+    private func recordTimeOnUniqueue(type:OSLockType, time: Double) {
+        
         var currentValue = timeCosts[type]!
-        currentValue += Int(time * 1000000)
+        currentValue += time
         timeCosts[type] = currentValue
         
         rcount = rcount + 1
@@ -154,15 +167,28 @@ class OSLockCompare {
             
             print("\nMulti thread time cost:")
         }else { print("\nSingle thread time cost:") }
-        print("OSSpinLock:               \(timeCosts[OSLockType.l_OSSpinLock]!)")
-        print("dispatch_semaphore:       \(timeCosts[OSLockType.l_Semaphore]!)")
-        print("pthread_mutex:            \(timeCosts[OSLockType.l_mutex]!)")
-        print("pthread_mutex(recursive): \(timeCosts[OSLockType.l_mutexRecurisive]!)")
-        print("NSCondition:              \(timeCosts[OSLockType.l_NSCondition]!)")
-        print("NSConditionLock:          \(timeCosts[OSLockType.l_NSConditionLock]!)")
-        print("NSLock:                   \(timeCosts[OSLockType.l_NSLock]!)")
-        print("NSRecursiveLock:          \(timeCosts[OSLockType.l_NSRecusiveLock]!)")
-        print("OSUnfairLock:             \(timeCosts[OSLockType.l_OSUnfairLock]!)")
+        
+        let scale:Double = 10000000
+        
+        print("OSSpinLock:               \(timeCosts[OSLockType.l_OSSpinLock]! * scale)")
+        print("dispatch_semaphore:       \(timeCosts[OSLockType.l_Semaphore]! * scale)")
+        print("pthread_mutex:            \(timeCosts[OSLockType.l_mutex]! * scale)")
+        print("pthread_mutex(recursive): \(timeCosts[OSLockType.l_mutexRecurisive]! * scale)")
+        print("NSCondition:              \(timeCosts[OSLockType.l_NSCondition]! * scale)")
+        print("NSConditionLock:          \(timeCosts[OSLockType.l_NSConditionLock]! * scale)")
+        print("NSLock:                   \(timeCosts[OSLockType.l_NSLock]! * scale)")
+        print("NSRecursiveLock:          \(timeCosts[OSLockType.l_NSRecusiveLock]! * scale)")
+        print("OSUnfairLock:             \(timeCosts[OSLockType.l_OSUnfairLock]! * scale)")
+        
+        print("\(Int(timeCosts[OSLockType.l_OSSpinLock]! * scale))")
+        print("\(Int(timeCosts[OSLockType.l_Semaphore]! * scale))")
+        print("\(Int(timeCosts[OSLockType.l_mutex]! * scale))")
+        print("\(Int(timeCosts[OSLockType.l_mutexRecurisive]! * scale))")
+        print("\(Int(timeCosts[OSLockType.l_NSCondition]! * scale))")
+        print("\(Int(timeCosts[OSLockType.l_NSConditionLock]! * scale))")
+        print("\(Int(timeCosts[OSLockType.l_NSLock]! * scale))")
+        print("\(Int(timeCosts[OSLockType.l_NSRecusiveLock]! * scale))")
+        print("\(Int(timeCosts[OSLockType.l_OSUnfairLock]! * scale))")
     }
     
     //mark: test locks
@@ -171,7 +197,7 @@ class OSLockCompare {
         for index in 1...repeatTimes {
             let start = CACurrentMediaTime()
             OSSpinLockLock(&splinLock)
-            print("index:\(index)")
+            print("index:\(index) ")
             OSSpinLockUnlock(&splinLock)
             let end = CACurrentMediaTime()
             recordTimeFor(type: OSLockType.l_OSSpinLock, time: end - start)
@@ -185,11 +211,11 @@ class OSLockCompare {
             let start = CACurrentMediaTime()
             
             sema.wait()
-            print("index: \(index)")
+            print("index: \(index) ")
             sema.signal()
             
             let end = CACurrentMediaTime()
-            recordTimeFor(type: OSLockType.l_Semaphore, time: end - start)
+            self.recordTimeFor(type: OSLockType.l_Semaphore, time: end - start)
         }
     }
     
@@ -200,11 +226,11 @@ class OSLockCompare {
             let start = CACurrentMediaTime()
             
             pthread_mutex_lock(&mutex)
-            print("index: \(index)")
+            print("index: \(index) ")
             pthread_mutex_unlock(&mutex)
             
             let end = CACurrentMediaTime()
-            recordTimeFor(type: OSLockType.l_mutex, time: end - start)
+            self.recordTimeFor(type: OSLockType.l_mutex, time: end - start)
         }
     }
     
@@ -215,11 +241,11 @@ class OSLockCompare {
             let start = CACurrentMediaTime()
             
             pthread_mutex_lock(&rmutex)
-            print("index: \(index)")
+            print("index: \(index) ")
             pthread_mutex_unlock(&rmutex)
             
             let end = CACurrentMediaTime()
-            recordTimeFor(type: OSLockType.l_mutexRecurisive, time: end - start)
+            self.recordTimeFor(type: OSLockType.l_mutexRecurisive, time: end - start)
         }
     }
     
@@ -230,11 +256,11 @@ class OSLockCompare {
             let start = CACurrentMediaTime()
             
             condition.lock()
-            print("index: \(index)")
+            print("index: \(index) ")
             condition.unlock()
             
             let end = CACurrentMediaTime()
-            recordTimeFor(type: OSLockType.l_NSCondition, time: end - start)
+            self.recordTimeFor(type: OSLockType.l_NSCondition, time: end - start)
         }
     }
     
@@ -245,7 +271,7 @@ class OSLockCompare {
             let start = CACurrentMediaTime()
             
             clock.lock()
-            print("index: \(index)")
+            print("index: \(index) ")
             clock.unlock()
             
             let end = CACurrentMediaTime()
@@ -259,9 +285,9 @@ class OSLockCompare {
             
             let start = CACurrentMediaTime()
             
-            clock.lock()
-            print("index: \(index)")
-            clock.unlock()
+            lock.lock()
+            print("index: \(index) ")
+            lock.unlock()
             
             let end = CACurrentMediaTime()
             recordTimeFor(type: OSLockType.l_NSLock, time: end - start)
@@ -275,11 +301,11 @@ class OSLockCompare {
             let start = CACurrentMediaTime()
             
             rlock.lock()
-            print("index: \(index)")
+            print("index: \(index) ")
             rlock.unlock()
             
             let end = CACurrentMediaTime()
-            recordTimeFor(type: OSLockType.l_NSRecusiveLock, time: end - start)
+            self.recordTimeFor(type: OSLockType.l_NSRecusiveLock, time: end - start)
         }
     }
     
@@ -290,11 +316,11 @@ class OSLockCompare {
             let start = CACurrentMediaTime()
             
             os_unfair_lock_lock(&unfair)
-            print("index: \(index)")
+            print("index: \(index) ")
             os_unfair_lock_unlock(&unfair)
             
             let end = CACurrentMediaTime()
-            recordTimeFor(type: OSLockType.l_OSUnfairLock, time: end - start)
+            self.recordTimeFor(type: OSLockType.l_OSUnfairLock, time: end - start)
         }
     }
 }
