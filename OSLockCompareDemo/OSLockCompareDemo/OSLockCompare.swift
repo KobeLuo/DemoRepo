@@ -274,7 +274,7 @@ class OSLockCompare {
             clock.lock()
             print("index: \(index) ")
             clock.unlock()
-            
+            clock.try()
             let end = CACurrentMediaTime()
             recordTimeFor(type: OSLockType.l_NSConditionLock, time: end - start)
         }
