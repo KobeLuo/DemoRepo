@@ -23,5 +23,9 @@
     // Update the view, if already loaded.
 }
 
+- (IBAction)store:(id)sender {
+    
+    
+}
 
 @end

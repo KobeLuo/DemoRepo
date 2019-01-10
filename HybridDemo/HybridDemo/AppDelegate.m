@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "FileOperateServer.h"
 
 @interface AppDelegate ()
 

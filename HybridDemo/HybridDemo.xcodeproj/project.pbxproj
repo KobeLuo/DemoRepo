@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A0427EA21E716C200B47D9D /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0427E921E716C200B47D9D /* NSString+Extension.m */; };
+		4A0427EB21E716DC00B47D9D /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0427E921E716C200B47D9D /* NSString+Extension.m */; };
+		4A0427ED21E71B9000B47D9D /* HostFinderConnectionXPC.xpc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4AB0031821E5E57F00B39744 /* HostFinderConnectionXPC.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4A0427F021E7283000B47D9D /* HostFinderConnectionXPC.xpc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4AB0031821E5E57F00B39744 /* HostFinderConnectionXPC.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4A7C27BF21E5E03D00016D64 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7C27BE21E5E03D00016D64 /* AppDelegate.m */; };
 		4A7C27C221E5E03D00016D64 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7C27C121E5E03D00016D64 /* ViewController.m */; };
 		4A7C27C421E5E03D00016D64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A7C27C321E5E03D00016D64 /* Assets.xcassets */; };
@@ -32,6 +36,8 @@
 		4A7C289F21E5E36800016D64 /* HelperFinderSync.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4A7C289621E5E36800016D64 /* HelperFinderSync.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4A7C28A921E5E38B00016D64 /* FinderSync.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7C28A521E5E38B00016D64 /* FinderSync.m */; };
 		4A7C28AA21E5E38B00016D64 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A7C28A821E5E38B00016D64 /* Info.plist */; };
+		4AB0031D21E5E57F00B39744 /* FileOperateServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB0031C21E5E57F00B39744 /* FileOperateServer.m */; };
+		4AB0031F21E5E57F00B39744 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB0031E21E5E57F00B39744 /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,9 +83,36 @@
 			remoteGlobalIDString = 4A7C289521E5E36800016D64;
 			remoteInfo = HelperFinderSync;
 		};
+		4AB0032121E5E57F00B39744 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4A7C27B221E5E03D00016D64 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4AB0031721E5E57F00B39744;
+			remoteInfo = HostFinderConnectionXPC;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		4A0427EC21E71B8700B47D9D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
+			dstSubfolderSpec = 16;
+			files = (
+				4A0427ED21E71B9000B47D9D /* HostFinderConnectionXPC.xpc in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A0427EF21E7282200B47D9D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
+			dstSubfolderSpec = 16;
+			files = (
+				4A0427F021E7283000B47D9D /* HostFinderConnectionXPC.xpc in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4A7C280021E5E08700016D64 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -105,6 +138,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4A0427E821E716C200B47D9D /* NSString+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
+		4A0427E921E716C200B47D9D /* NSString+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		4A7C27BA21E5E03D00016D64 /* HybridDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HybridDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A7C27BD21E5E03D00016D64 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4A7C27BE21E5E03D00016D64 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -147,6 +182,12 @@
 		4A7C28A621E5E38B00016D64 /* HelperFinderSync.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = HelperFinderSync.entitlements; sourceTree = "<group>"; };
 		4A7C28A721E5E38B00016D64 /* FinderSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderSync.h; sourceTree = "<group>"; };
 		4A7C28A821E5E38B00016D64 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4AB0031821E5E57F00B39744 /* HostFinderConnectionXPC.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = HostFinderConnectionXPC.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AB0031A21E5E57F00B39744 /* FileOperationProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileOperationProtocol.h; sourceTree = "<group>"; };
+		4AB0031B21E5E57F00B39744 /* FileOperateServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileOperateServer.h; sourceTree = "<group>"; };
+		4AB0031C21E5E57F00B39744 /* FileOperateServer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileOperateServer.m; sourceTree = "<group>"; };
+		4AB0031E21E5E57F00B39744 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4AB0032021E5E57F00B39744 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +247,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4AB0031521E5E57F00B39744 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -214,6 +262,7 @@
 			children = (
 				4A7C27BC21E5E03D00016D64 /* HybridDemo */,
 				4A7C288B21E5E33600016D64 /* FinderSync */,
+				4AB0031921E5E57F00B39744 /* HostFinderConnectionXPC */,
 				4A7C27BB21E5E03D00016D64 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -229,6 +278,7 @@
 				4A7C281A21E5E0FA00016D64 /* FinderDebugHelperTests.xctest */,
 				4A7C282521E5E0FA00016D64 /* FinderDebugHelperUITests.xctest */,
 				4A7C289621E5E36800016D64 /* HelperFinderSync.appex */,
+				4AB0031821E5E57F00B39744 /* HostFinderConnectionXPC.xpc */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -244,6 +294,8 @@
 				4A7C27C521E5E03D00016D64 /* Main.storyboard */,
 				4A7C27C821E5E03D00016D64 /* Info.plist */,
 				4A7C27C921E5E03D00016D64 /* main.m */,
+				4A0427E821E716C200B47D9D /* NSString+Extension.h */,
+				4A0427E921E716C200B47D9D /* NSString+Extension.m */,
 				4A7C27CB21E5E03D00016D64 /* HybridDemo.entitlements */,
 				4A7C283521E5E15400016D64 /* Other */,
 			);
@@ -339,6 +391,18 @@
 			path = HybridDemo/Other/HelperFinderSync;
 			sourceTree = SOURCE_ROOT;
 		};
+		4AB0031921E5E57F00B39744 /* HostFinderConnectionXPC */ = {
+			isa = PBXGroup;
+			children = (
+				4AB0031A21E5E57F00B39744 /* FileOperationProtocol.h */,
+				4AB0031B21E5E57F00B39744 /* FileOperateServer.h */,
+				4AB0031C21E5E57F00B39744 /* FileOperateServer.m */,
+				4AB0031E21E5E57F00B39744 /* main.m */,
+				4AB0032021E5E57F00B39744 /* Info.plist */,
+			);
+			path = HostFinderConnectionXPC;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -350,11 +414,13 @@
 				4A7C27B721E5E03D00016D64 /* Frameworks */,
 				4A7C27B821E5E03D00016D64 /* Resources */,
 				4A7C280021E5E08700016D64 /* Embed App Extensions */,
+				4A0427EF21E7282200B47D9D /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				4A7C27FB21E5E08700016D64 /* PBXTargetDependency */,
+				4AB0032221E5E57F00B39744 /* PBXTargetDependency */,
 			);
 			name = HybridDemo;
 			productName = HybridDemo;
@@ -404,6 +470,7 @@
 				4A7C27EF21E5E08700016D64 /* Sources */,
 				4A7C27F021E5E08700016D64 /* Frameworks */,
 				4A7C27F121E5E08700016D64 /* Resources */,
+				4A0427EC21E71B8700B47D9D /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -486,6 +553,23 @@
 			productReference = 4A7C289621E5E36800016D64 /* HelperFinderSync.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		4AB0031721E5E57F00B39744 /* HostFinderConnectionXPC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4AB0032621E5E57F00B39744 /* Build configuration list for PBXNativeTarget "HostFinderConnectionXPC" */;
+			buildPhases = (
+				4AB0031421E5E57F00B39744 /* Sources */,
+				4AB0031521E5E57F00B39744 /* Frameworks */,
+				4AB0031621E5E57F00B39744 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HostFinderConnectionXPC;
+			productName = HostFinderConnectionXPC;
+			productReference = 4AB0031821E5E57F00B39744 /* HostFinderConnectionXPC.xpc */;
+			productType = "com.apple.product-type.xpc-service";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -497,6 +581,11 @@
 				TargetAttributes = {
 					4A7C27B921E5E03D00016D64 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 					4A7C27CF21E5E03D00016D64 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -511,6 +600,11 @@
 					};
 					4A7C280421E5E0F900016D64 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 					4A7C281921E5E0FA00016D64 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -522,6 +616,9 @@
 					};
 					4A7C289521E5E36800016D64 = {
 						CreatedOnToolsVersion = 9.4.1;
+					};
+					4AB0031721E5E57F00B39744 = {
+						CreatedOnToolsVersion = 10.1;
 					};
 				};
 			};
@@ -546,6 +643,7 @@
 				4A7C281921E5E0FA00016D64 /* FinderDebugHelperTests */,
 				4A7C282421E5E0FA00016D64 /* FinderDebugHelperUITests */,
 				4A7C289521E5E36800016D64 /* HelperFinderSync */,
+				4AB0031721E5E57F00B39744 /* HostFinderConnectionXPC */,
 			);
 		};
 /* End PBXProject section */
@@ -618,6 +716,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4AB0031621E5E57F00B39744 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -628,6 +733,7 @@
 				4A7C27C221E5E03D00016D64 /* ViewController.m in Sources */,
 				4A7C27CA21E5E03D00016D64 /* main.m in Sources */,
 				4A7C27BF21E5E03D00016D64 /* AppDelegate.m in Sources */,
+				4A0427EA21E716C200B47D9D /* NSString+Extension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,6 +795,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4AB0031421E5E57F00B39744 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AB0031F21E5E57F00B39744 /* main.m in Sources */,
+				4A0427EB21E716DC00B47D9D /* NSString+Extension.m in Sources */,
+				4AB0031D21E5E57F00B39744 /* FileOperateServer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -721,6 +837,11 @@
 			isa = PBXTargetDependency;
 			target = 4A7C289521E5E36800016D64 /* HelperFinderSync */;
 			targetProxy = 4A7C289D21E5E36800016D64 /* PBXContainerItemProxy */;
+		};
+		4AB0032221E5E57F00B39744 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4AB0031721E5E57F00B39744 /* HostFinderConnectionXPC */;
+			targetProxy = 4AB0032121E5E57F00B39744 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -857,7 +978,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = HybridDemo/HybridDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 24K4NVLUY4;
@@ -875,7 +995,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = HybridDemo/HybridDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 24K4NVLUY4;
@@ -1010,7 +1129,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = HybridDemo/Other/FinderDebugHelper/FinderDebugHelper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 24K4NVLUY4;
@@ -1028,7 +1146,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = HybridDemo/Other/FinderDebugHelper/FinderDebugHelper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 24K4NVLUY4;
@@ -1154,6 +1271,35 @@
 			};
 			name = Release;
 		};
+		4AB0032421E5E57F00B39744 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 24K4NVLUY4;
+				INFOPLIST_FILE = HostFinderConnectionXPC/Info.plist;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kobeluo.XPC.FileOperateServer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		4AB0032521E5E57F00B39744 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 24K4NVLUY4;
+				INFOPLIST_FILE = HostFinderConnectionXPC/Info.plist;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kobeluo.XPC.FileOperateServer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1234,6 +1380,15 @@
 			buildConfigurations = (
 				4A7C28A121E5E36800016D64 /* Debug */,
 				4A7C28A221E5E36800016D64 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4AB0032621E5E57F00B39744 /* Build configuration list for PBXNativeTarget "HostFinderConnectionXPC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4AB0032421E5E57F00B39744 /* Debug */,
+				4AB0032521E5E57F00B39744 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

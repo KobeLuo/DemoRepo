@@ -7,10 +7,11 @@
 //
 
 #import "FinderSync.h"
-
+#import "FileOperateServer.h"
 @interface FinderSync () {
     
     NSArray *_selectedItems;
+    NSXPCConnection *_fileOperConnection;
 }
 
 @property NSURL *myFolderURL;
@@ -24,17 +25,14 @@
     self = [super init];
     NSLog(@"%s launched from %@ ; compiled at %s", __PRETTY_FUNCTION__, [[NSBundle mainBundle] bundlePath], __TIME__);
     
-    NSString *rootpath = nil;
-#if HYBRID
-    rootpath = @"/Users/naver/Development/Research/HybridSync/HybridHostAlias";
-#endif
+    NSString *rootpath = @"/Users/naver/Development/Research/HybridSync/HybridHostAlias";
     // Set up the directory we are syncing.
     self.myFolderURL = [NSURL fileURLWithPath:rootpath];
     [FIFinderSyncController defaultController].directoryURLs = [NSSet setWithObject:self.myFolderURL];
     
-    // Set up images for our badge identifiers. For demonstration purposes, this uses off-the-shelf images.
-    //    [[FIFinderSyncController defaultController] setBadgeImage:[NSImage imageNamed: NSImageNameColorPanel] label:@"Status One" forBadgeIdentifier:@"One"];
-    //    [[FIFinderSyncController defaultController] setBadgeImage:[NSImage imageNamed: NSImageNameCaution] label:@"Status Two" forBadgeIdentifier:@"Two"];
+    _fileOperConnection = [[NSXPCConnection alloc] initWithServiceName:@"com.kobeluo.XPC.FileOperateServer"];
+    _fileOperConnection.remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(FileOperation)];
+    [_fileOperConnection resume];
     
     return self;
 }
@@ -97,34 +95,25 @@
 
 
 - (void)store:(NSMenuItem *)o {
-    
-    for (NSURL *url in _selectedItems) {
-        
-        NSString *dest = url.path;
-        NSString *name = dest.lastPathComponent;
-        NSString *source = [dest.stringByDeletingLastPathComponent.stringByDeletingLastPathComponent stringByAppendingFormat:@"/HybridHost/%@",name];
-        
-        NSError *err = nil;
-        [NSFileManager.defaultManager removeItemAtPath:dest error:&err];
-        if (err) {
+
+    [_selectedItems enumerateObjectsUsingBlock:^(NSURL *url, NSUInteger idx, BOOL * _Nonnull stop) {
+       
+        [[self->_fileOperConnection remoteObjectProxy] operationWith:url action:1 reply:^(BOOL result) {
             
-            NSLog(@"%@",err);
-        }
-        //        [NSFileManager.defaultManager removeItemAtURL:url error:NULL];
-        //        [[NSFileManager defaultManager] copyItemAtPath:source toPath:dest error:NULL];
-    }
+            NSLog(@"store success");
+        }];
+    }];
 }
 
 - (void)free:(NSMenuItem *)o {
     
-    for (NSURL *url in _selectedItems) {
+    [_selectedItems enumerateObjectsUsingBlock:^(NSURL *url, NSUInteger idx, BOOL * _Nonnull stop) {
         
-        NSString *dest = url.path;
-        NSString *name = dest.lastPathComponent;
-        NSString *source = [dest.stringByDeletingLastPathComponent.stringByDeletingLastPathComponent stringByAppendingFormat:@"HybridHost/%@",name];
-        
-        [[NSFileManager defaultManager] copyItemAtPath:source toPath:dest error:NULL];
-    }
+        [[self->_fileOperConnection remoteObjectProxy] operationWith:url action:0 reply:^(BOOL result) {
+            
+            NSLog(@"free success");
+        }];
+    }];
 }
 
 - (IBAction)sampleAction:(id)sender {

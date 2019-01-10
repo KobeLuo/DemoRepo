@@ -7,6 +7,13 @@
 //
 
 #import "ViewController.h"
+#import "FileOperateServer.h"
+#import "NSString+Extension.h"
+@interface ViewController() {
+    
+    NSXPCConnection *_fileOperConnection;
+}
+@end
 
 @implementation ViewController
 
@@ -16,15 +23,16 @@
     
     [self initialDir];
     
-    //    createSparseFileUseFTruncate();
-    //    createSparseFileUseFAllocate();
+    _fileOperConnection = [[NSXPCConnection alloc] initWithServiceName:@"com.kobeluo.XPC.FileOperateServer"];
+    _fileOperConnection.remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(FileOperation)];
+    [_fileOperConnection resume];
 }
 
 - (void)initialDir {
     
     NSError *error = nil;
     NSArray *properties = [NSArray arrayWithObjects:
-                           NSURLLocalizedNameKey,
+                           NSURLNameKey,
                            NSURLFileSizeKey,
                            NSURLLocalizedTypeDescriptionKey,nil];
     
@@ -41,78 +49,46 @@
     
     [list enumerateObjectsUsingBlock:^(NSURL *url, NSUInteger idx, BOOL * _Nonnull stop) {
         
-        NSString *localizedName = nil;
-        [url getResourceValue:&localizedName forKey:NSURLLocalizedNameKey error:NULL];
+        NSString *name = nil;
+        [url getResourceValue:&name forKey:NSURLNameKey error:NULL];
         
         NSNumber *fileSize = nil;
         [url getResourceValue:&fileSize forKey:NSURLFileSizeKey error:NULL];
         
-        if (localizedName && fileSize) {
+        if (name && fileSize) {
             
-            char *path = (char *)[virtualDir stringByAppendingPathComponent:localizedName].UTF8String;
-            createSparseFileUseFTruncate(path, [fileSize integerValue]);
+            NSString *path = [virtualDir stringByAppendingPathComponent:name];
+            [path createSparseFileWithApparentSize:fileSize.unsignedLongLongValue];
         }
     }];
 }
-
-- (void)createSparseFileUseDDCommand {}
-
-uint64_t file_size = 10 * 1024ULL;
-
-int createSparseFileUseFTruncate(char *path, long long size) {
-    
-    int fd = -1;
-    fd = open(path, O_RDWR | O_CREAT, 0666);
-    if (fd < 0) {
-        
-        printf("ftruncate open failed\n");
-        return -1;
-    }
-    
-    if (ftruncate(fd, size)) {
-        
-        printf("ftruncate file error \n");
-        return -1;
-    }
-    //    lseek(fd, file_size - 1, SEEK_CUR);
-    //    write(fd, "N", 1);
-    
-    close(fd);
-    return 0;
-}
-
-int createSparseFileUseFAllocate() {
-    
-    int fd = -1;
-    int ret = -1;
-    
-    fd = open("/Users/naver/Desktop/fallcate.txt",O_RDWR | O_CREAT, 0666);
-    if (fd < 0) {
-        
-        printf("fallcate open failed");
-        return -1;
-    }
-    
-    fstore_t store = {F_ALLOCATECONTIG,F_PEOFPOSMODE,0,file_size};
-    ret = fcntl(fd, F_PREALLOCATE,&store);
-    if (ret < 0) {
-        
-        printf("fcntl prealloc failed");
-        return -1;
-    }
-    
-    ret = ftruncate(fd, file_size);
-    
-    close(fd);
-    return 0;
-}
-
 
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
     // Update the view, if already loaded.
 }
 
+- (IBAction)store:(id)sender {
 
+    NSString *path = [@"/Users/naver/Development/Research/HybridSync/HybridHostAlias/Hybrid Demo Introduce.pages" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSURL *url = [NSURL URLWithString:path];
+    
+    [[_fileOperConnection remoteObjectProxy] operationWith:url reply:^(BOOL v) {
+        
+        NSLog(@"result:%d",v);
+    }];
+}
+- (IBAction)free:(id)sender {
+    
+    NSString *path = [@"/Users/naver/Development/Research/HybridSync/HybridHostAlias/Hybrid Demo Introduce.pages" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSURL *url = [NSURL fileURLWithPath:path];
+    
+    [[_fileOperConnection remoteObjectProxy] operationWith:url action:0 reply:^(BOOL v) {
+        
+        NSLog(@"result:%d",v);
+    }];
+}
 @end
 

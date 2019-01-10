@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HybridDemo/Other/FinderSync/FinderSync.m"
-            timestampString = "568714353.312735"
+            filePath = "HostFinderConnectionXPC/FileOperateServer.m"
+            timestampString = "568797251.920415"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "-store:"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "-operationWith:action:reply:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
