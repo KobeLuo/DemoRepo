@@ -14,6 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString *)runAsCommand;
 - (BOOL)createSparseFileWithApparentSize:(unsigned long long)size;
+
+- (void)setXattrPlacehold:(BOOL)placeholder;
+- (BOOL)isPlaceholder;
+
 @end
 
 NS_ASSUME_NONNULL_END

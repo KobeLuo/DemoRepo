@@ -9,14 +9,21 @@
 #import "FileOperateServer.h"
 #import "NSString+Extension.h"
 
+@interface FileOperateServer() {
+    
+    NSXPCListener *_listener;
+}
+
+@end
+
 @implementation FileOperateServer
 #pragma mark - XPC Listener Delegate
 - (BOOL)listener:(NSXPCListener *)listener shouldAcceptNewConnection:(NSXPCConnection *)newConnection {
     
+    _listener = listener;
     newConnection.exportedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(FileOperation)];
-    
+    newConnection.remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(ForwardCall)];
     newConnection.exportedObject = self;
-//    newConnection.remoteObjectInterface
     self.xpcConnection = newConnection;
     
     [self.xpcConnection resume];
@@ -27,6 +34,7 @@
 #pragma mark - XPC Interface Delegate
 - (void)operationWith:(NSURL *)url action:(int)act reply:(void (^)(BOOL))reply {
     
+    NSLog(@"%@",_listener);
     // store aways if act equal 1， otherwise free space.
     if (act == 1) {
         
@@ -51,7 +59,25 @@
         
         unsigned long long size = [[[NSFileManager defaultManager] attributesOfItemAtPath:url.path error:nil] fileSize];
         [url.path createSparseFileWithApparentSize:size];
+        
+        NSString *dest = url.path;
+        [dest setXattrPlacehold:YES];
     }
+    
+    if (reply) {
+        
+        reply(YES);
+    }
+}
+
+- (void)operationreply:(void (^)(BOOL))reply {
+    
+    NSLog(@"received");
+    
+    [[_xpcConnection remoteObjectProxy] messageDidCall:@"123" reply:^(BOOL v) {
+        
+        NSLog(@"s");
+    }];
     
     if (reply) {
         

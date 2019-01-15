@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A025CAC21E84483007A3DC6 /* FileWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A025CAB21E84483007A3DC6 /* FileWatcher.m */; };
+		4A025CAE21E87E1A007A3DC6 /* HostFinderConnectionXPC.xpc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4AB0031821E5E57F00B39744 /* HostFinderConnectionXPC.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4A0427EA21E716C200B47D9D /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0427E921E716C200B47D9D /* NSString+Extension.m */; };
 		4A0427EB21E716DC00B47D9D /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0427E921E716C200B47D9D /* NSString+Extension.m */; };
-		4A0427ED21E71B9000B47D9D /* HostFinderConnectionXPC.xpc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4AB0031821E5E57F00B39744 /* HostFinderConnectionXPC.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4A0427F021E7283000B47D9D /* HostFinderConnectionXPC.xpc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4AB0031821E5E57F00B39744 /* HostFinderConnectionXPC.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4A0427F521EDAE4600B47D9D /* FilePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0427F421EDAE4600B47D9D /* FilePresenter.m */; };
 		4A7C27BF21E5E03D00016D64 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7C27BE21E5E03D00016D64 /* AppDelegate.m */; };
 		4A7C27C221E5E03D00016D64 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7C27C121E5E03D00016D64 /* ViewController.m */; };
 		4A7C27C421E5E03D00016D64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A7C27C321E5E03D00016D64 /* Assets.xcassets */; };
@@ -93,13 +95,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		4A0427EC21E71B8700B47D9D /* CopyFiles */ = {
+		4A025CAD21E87E13007A3DC6 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
 			dstSubfolderSpec = 16;
 			files = (
-				4A0427ED21E71B9000B47D9D /* HostFinderConnectionXPC.xpc in CopyFiles */,
+				4A025CAE21E87E1A007A3DC6 /* HostFinderConnectionXPC.xpc in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +140,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4A025CAA21E84483007A3DC6 /* FileWatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileWatcher.h; sourceTree = "<group>"; };
+		4A025CAB21E84483007A3DC6 /* FileWatcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileWatcher.m; sourceTree = "<group>"; };
 		4A0427E821E716C200B47D9D /* NSString+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
 		4A0427E921E716C200B47D9D /* NSString+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
+		4A0427F321EDAE4600B47D9D /* FilePresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilePresenter.h; sourceTree = "<group>"; };
+		4A0427F421EDAE4600B47D9D /* FilePresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilePresenter.m; sourceTree = "<group>"; };
 		4A7C27BA21E5E03D00016D64 /* HybridDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HybridDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A7C27BD21E5E03D00016D64 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4A7C27BE21E5E03D00016D64 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -290,6 +296,10 @@
 				4A7C27BE21E5E03D00016D64 /* AppDelegate.m */,
 				4A7C27C021E5E03D00016D64 /* ViewController.h */,
 				4A7C27C121E5E03D00016D64 /* ViewController.m */,
+				4A0427F321EDAE4600B47D9D /* FilePresenter.h */,
+				4A0427F421EDAE4600B47D9D /* FilePresenter.m */,
+				4A025CAA21E84483007A3DC6 /* FileWatcher.h */,
+				4A025CAB21E84483007A3DC6 /* FileWatcher.m */,
 				4A7C27C321E5E03D00016D64 /* Assets.xcassets */,
 				4A7C27C521E5E03D00016D64 /* Main.storyboard */,
 				4A7C27C821E5E03D00016D64 /* Info.plist */,
@@ -470,7 +480,7 @@
 				4A7C27EF21E5E08700016D64 /* Sources */,
 				4A7C27F021E5E08700016D64 /* Frameworks */,
 				4A7C27F121E5E08700016D64 /* Resources */,
-				4A0427EC21E71B8700B47D9D /* CopyFiles */,
+				4A025CAD21E87E13007A3DC6 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -732,7 +742,9 @@
 			files = (
 				4A7C27C221E5E03D00016D64 /* ViewController.m in Sources */,
 				4A7C27CA21E5E03D00016D64 /* main.m in Sources */,
+				4A0427F521EDAE4600B47D9D /* FilePresenter.m in Sources */,
 				4A7C27BF21E5E03D00016D64 /* AppDelegate.m in Sources */,
+				4A025CAC21E84483007A3DC6 /* FileWatcher.m in Sources */,
 				4A0427EA21E716C200B47D9D /* NSString+Extension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

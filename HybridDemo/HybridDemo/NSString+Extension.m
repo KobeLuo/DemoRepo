@@ -7,6 +7,7 @@
 //
 
 #import "NSString+Extension.h"
+#import <sys/xattr.h>
 
 @implementation NSString (Extension)
 
@@ -52,5 +53,55 @@ int createSparseFileUseFTruncate(char *path, long long size) {
     close(fd);
     return 0;
 }
+
+
+#define placeholderKey @"attributes.extern.placeholder.for.filesystem"
+
+- (void)setXattrPlacehold:(BOOL)placeholder {
+    
+    const char *cpath = [self cStringUsingEncoding:NSUTF8StringEncoding];
+    if (placeholder) {
+        
+        
+        int rc = setxattr(cpath, placeholderKey.UTF8String, &placeholder, sizeof(placeholder), 0, 0);
+        if (rc) {
+            NSLog(@"placeholder extension set error for path:%@",self);
+        }
+    }else {
+        
+        removexattr(cpath, placeholderKey.UTF8String, 0);
+    }
+}
+
+- (BOOL)isPlaceholder {
+    
+    const char *cpath = [self cStringUsingEncoding:NSUTF8StringEncoding];
+    ssize_t len = getxattr(cpath, placeholderKey.UTF8String, NULL, 0, 0, 0);
+    if (len < 0) {
+        
+        NSLog(@"get placeholder extension error for path:%@",self);
+        return NO;
+    }
+    return len;
+    
+    //    const char *attrName = [attribute UTF8String];
+    //    const char *filePath = [_path fileSystemRepresentation];
+    //
+    //    // get size of needed buffer
+    //    int bufferLength = getxattr(filePath, attrName, NULL, 0, 0, 0);
+    //
+    //    // make a buffer of sufficient length
+    //    char *buffer = malloc(bufferLength);
+    //
+    //    // now actually get the attribute string
+    //    getxattr(filePath, attrName, buffer, 255, 0, 0);
+    //
+    //    // convert to NSString
+    //    NSString *retString = [[NSString alloc] initWithBytes:buffer length:bufferLength encoding:NSUTF8StringEncoding];
+    //
+    //    // release buffer
+    //    free(buffer);
+}
+
 
 @end

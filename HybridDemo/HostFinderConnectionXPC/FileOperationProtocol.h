@@ -12,6 +12,13 @@
 
 - (void)operationWith:(NSURL *)url reply:(void (^)(BOOL))reply;
 - (void)operationWith:(NSURL *)url action:(int)act reply:(void (^)(BOOL))reply;
+- (void)operationreply:(void (^)(BOOL))reply;
+
+@end
+
+@protocol ForwardCall
+
+- (void)messageDidCall:(NSString *)info reply:(void (^)(BOOL))reply;
 
 @end
 
