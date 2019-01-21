@@ -32,6 +32,30 @@
 }
 
 #pragma mark - XPC Interface Delegate
+
+- (void)operationWith:(NSURL *)sourceUrl
+                 dest:(NSURL *)destUrl
+               action:(int)act
+                reply:(void (^)(BOOL))reply {
+    
+    NSString *source = sourceUrl.path;
+    NSString *dest = destUrl.path;
+    
+    NSError *error = nil;
+    [[NSFileManager defaultManager] removeItemAtPath:dest error:&error];
+    if (error) {
+        
+        NSLog(@"remove file error: %@",error.localizedDescription);
+    }
+    
+    [[NSFileManager defaultManager] copyItemAtPath:source toPath:dest error:&error];
+    
+    if (error) {
+        
+        NSLog(@"copy file error: %@",error.localizedDescription);
+    }
+}
+
 - (void)operationWith:(NSURL *)url action:(int)act reply:(void (^)(BOOL))reply {
     
     NSLog(@"%@",_listener);
@@ -42,19 +66,11 @@
         NSString *name = dest.lastPathComponent;
         NSString *source = [dest.stringByDeletingLastPathComponent.stringByDeletingLastPathComponent stringByAppendingFormat:@"/HybridHost/%@",name];
         
-        NSError *error = nil;
-        [[NSFileManager defaultManager] removeItemAtPath:url.path error:&error];
-        if (error) {
-            
-            NSLog(@"remove file error: %@",error.localizedDescription);
-        }
+        [self operationWith:[NSURL fileURLWithPath:source]
+                       dest:url
+                     action:act
+                      reply:reply];
         
-        [[NSFileManager defaultManager] copyItemAtPath:source toPath:dest error:&error];
-        
-        if (error) {
-            
-            NSLog(@"copy file error: %@",error.localizedDescription);
-        }
     }else {
         
         unsigned long long size = [[[NSFileManager defaultManager] attributesOfItemAtPath:url.path error:nil] fileSize];

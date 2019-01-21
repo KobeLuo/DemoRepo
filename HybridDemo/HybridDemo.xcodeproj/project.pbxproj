@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4A025CAC21E84483007A3DC6 /* FileWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A025CAB21E84483007A3DC6 /* FileWatcher.m */; };
 		4A025CAE21E87E1A007A3DC6 /* HostFinderConnectionXPC.xpc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4AB0031821E5E57F00B39744 /* HostFinderConnectionXPC.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4A025CB121F56230007A3DC6 /* HybridCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A025CB021F56230007A3DC6 /* HybridCore.m */; };
 		4A0427EA21E716C200B47D9D /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0427E921E716C200B47D9D /* NSString+Extension.m */; };
 		4A0427EB21E716DC00B47D9D /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0427E921E716C200B47D9D /* NSString+Extension.m */; };
 		4A0427F021E7283000B47D9D /* HostFinderConnectionXPC.xpc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4AB0031821E5E57F00B39744 /* HostFinderConnectionXPC.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -142,6 +143,8 @@
 /* Begin PBXFileReference section */
 		4A025CAA21E84483007A3DC6 /* FileWatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileWatcher.h; sourceTree = "<group>"; };
 		4A025CAB21E84483007A3DC6 /* FileWatcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileWatcher.m; sourceTree = "<group>"; };
+		4A025CAF21F56230007A3DC6 /* HybridCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HybridCore.h; sourceTree = "<group>"; };
+		4A025CB021F56230007A3DC6 /* HybridCore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HybridCore.m; sourceTree = "<group>"; };
 		4A0427E821E716C200B47D9D /* NSString+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
 		4A0427E921E716C200B47D9D /* NSString+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		4A0427F321EDAE4600B47D9D /* FilePresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilePresenter.h; sourceTree = "<group>"; };
@@ -296,6 +299,8 @@
 				4A7C27BE21E5E03D00016D64 /* AppDelegate.m */,
 				4A7C27C021E5E03D00016D64 /* ViewController.h */,
 				4A7C27C121E5E03D00016D64 /* ViewController.m */,
+				4A025CAF21F56230007A3DC6 /* HybridCore.h */,
+				4A025CB021F56230007A3DC6 /* HybridCore.m */,
 				4A0427F321EDAE4600B47D9D /* FilePresenter.h */,
 				4A0427F421EDAE4600B47D9D /* FilePresenter.m */,
 				4A025CAA21E84483007A3DC6 /* FileWatcher.h */,
@@ -740,6 +745,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A025CB121F56230007A3DC6 /* HybridCore.m in Sources */,
 				4A7C27C221E5E03D00016D64 /* ViewController.m in Sources */,
 				4A7C27CA21E5E03D00016D64 /* main.m in Sources */,
 				4A0427F521EDAE4600B47D9D /* FilePresenter.m in Sources */,
@@ -998,6 +1004,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kobeluo.HybridDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1015,6 +1022,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kobeluo.HybridDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1112,6 +1120,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kobeluo.HybridDemo.FinderSync;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1131,6 +1140,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kobeluo.HybridDemo.FinderSync;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1149,6 +1159,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kobeluo.FinderDebugHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1166,6 +1177,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kobeluo.FinderDebugHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1258,6 +1270,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kobeluo.FinderDebugHelper.HelperFinderSync;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1277,6 +1290,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kobeluo.FinderDebugHelper.HelperFinderSync;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1290,6 +1304,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 24K4NVLUY4;
 				INFOPLIST_FILE = HostFinderConnectionXPC/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kobeluo.XPC.FileOperateServer;
@@ -1305,6 +1320,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 24K4NVLUY4;
 				INFOPLIST_FILE = HostFinderConnectionXPC/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kobeluo.XPC.FileOperateServer;
 				PRODUCT_NAME = "$(TARGET_NAME)";

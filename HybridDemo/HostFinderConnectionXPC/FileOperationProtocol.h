@@ -14,6 +14,11 @@
 - (void)operationWith:(NSURL *)url action:(int)act reply:(void (^)(BOOL))reply;
 - (void)operationreply:(void (^)(BOOL))reply;
 
+- (void)operationWith:(NSURL *)sourceUrl
+                 dest:(NSURL *)destUrl
+               action:(int)act
+                reply:(void (^)(BOOL))reply;
+
 @end
 
 @protocol ForwardCall

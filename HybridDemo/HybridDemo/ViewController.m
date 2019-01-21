@@ -7,20 +7,19 @@
 //
 
 #import "ViewController.h"
-#import "FileOperateServer.h"
-#import "NSString+Extension.h"
 #import "FileWatcher.h"
-#import "FilePresenter.h"
-#import "ExtensionAttributes.h"
+#import "HybridCore.h"
 @interface ViewController() {
     
-    NSXPCConnection *_fileOperConnection;
+    NSString *_resourcePath;
+    NSString *_mirrorPath;
     
     NSOperationQueue *_queue;
-    
     NSString *_watchPath;
     
-    NSMutableArray *_presenters;
+    HybridCore *_hcore;
+    
+    NSButton *_mirrorSender;
 }
 @end
 
@@ -30,94 +29,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self initialDir];
-    
-    _fileOperConnection = [[NSXPCConnection alloc] initWithServiceName:@"com.kobeluo.XPC.FileOperateServer"];
-    _fileOperConnection.remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(FileOperation)];
-    _fileOperConnection.exportedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(ForwardCall)];
-    _fileOperConnection.exportedObject = self;
-    [_fileOperConnection resume];
-    
 //    [self createFileWatch];
-    _presenters = [NSMutableArray new];
 }
 
 - (void)createFileWatch {
     
     _queue = [NSOperationQueue new];
     
+    _watchPath = @"/path/to/you/want/watching";
     FileWatcher *watcher = [[FileWatcher alloc] initWithWatchPath:_watchPath];
     [_queue addOperation:watcher];
-}
-
-
-- (void)initialDir {
-    
-    NSError *error = nil;
-    NSArray *properties = [NSArray arrayWithObjects:
-                           NSURLNameKey,
-                           NSURLFileSizeKey,
-                           NSURLLocalizedTypeDescriptionKey,nil];
-    
-    NSString *rootpath = @"/Users/naver/Development/Research/HybridSync/HybridHost";
-    NSString *virtualDir = [rootpath stringByAppendingString:@"Alias"];
-    _watchPath = virtualDir;
-    
-    if (![NSFileManager.defaultManager fileExistsAtPath:virtualDir]) {
-        
-        [NSFileManager.defaultManager createDirectoryAtPath:virtualDir withIntermediateDirectories:YES attributes:nil error:NULL];
-    }
-    
-    NSURL *url = [NSURL fileURLWithPath:rootpath];
-    NSArray *list = [NSFileManager.defaultManager contentsOfDirectoryAtURL:url
-                                                includingPropertiesForKeys:properties options:NSDirectoryEnumerationSkipsHiddenFiles error:&error];
-    
-    [list enumerateObjectsUsingBlock:^(NSURL *url, NSUInteger idx, BOOL * _Nonnull stop) {
-        
-        NSString *name = nil;
-        [url getResourceValue:&name forKey:NSURLNameKey error:NULL];
-        
-        NSNumber *fileSize = nil;
-        [url getResourceValue:&fileSize forKey:NSURLFileSizeKey error:NULL];
-        
-        if (name && fileSize) {
-            
-            NSString *path = [(NSString *)virtualDir stringByAppendingPathComponent:name];
-            [path createSparseFileWithApparentSize:fileSize.unsignedLongLongValue];
-            
-            [path setXattrPlacehold:YES];
-            
-            [self startupMonitorWith:path];
-        }
-    }];
-}
-
-- (void)startupMonitorWith:(NSString *)path {
-    
-    NSURL *url = [NSURL fileURLWithPath:path];
-    FilePresenter *presenter = [[FilePresenter alloc] initWithUrl:url];
-    
-    __weak typeof(self) weakself = self;
-    
-    [presenter observeFileNeedDownload:^(NSString * _Nonnull path) {
-        
-        [weakself downloadFileWith:path];
-    }];
-    
-    [_presenters addObject:presenter];
-}
-
-- (void)downloadFileWith:(NSString *)path {
-    
-    NSURL *url = [NSURL fileURLWithPath:path];
-    [[_fileOperConnection remoteObjectProxy] operationWith:url reply:^(BOOL v) {
-        
-        if (v) {
-            
-            NSLog(@"download success: %@",path);
-            [path setXattrPlacehold:NO];
-        }
-    }];
 }
 
 - (void)setRepresentedObject:(id)representedObject {
@@ -126,25 +47,27 @@
 }
 
 - (IBAction)store:(id)sender {
-
-    NSString *path = @"/Users/naver/Development/Research/HybridSync/HybridHostAlias/chinaPermit_9.pdf";
-    [self startupMonitorWith:path];
-    [path setXattrPlacehold:YES];
-//    [[_fileOperConnection remoteObjectProxy] operationreply:^(BOOL v) {
-//
-//        NSLog(@"result:%d",v);
-//    }];
+    
+//    NSArray *selectedItems = [FIFinderSyncController.defaultController selectedItemURLs];
+    
 }
 - (IBAction)free:(id)sender {
     
-//    NSString *path = [@"/Users/naver/Development/Research/HybridSync/HybridHostAlias/Hybrid Demo Introduce.pages" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//
-//    NSURL *url = [NSURL fileURLWithPath:path];
-//
-//    [[_fileOperConnection remoteObjectProxy] operationWith:url action:0 reply:^(BOOL v) {
-//
-//        NSLog(@"result:%d",v);
-//    }];
+    if (!_mirrorSender) { return; }
+    
+    /// 1.reset the mirror button's title.
+    NSString *desc = @"Please selected one empty folder to mirror";
+    [_mirrorSender setTitle:desc];
+    
+    /// 2.clean the mirror route.
+    [_hcore clean];
+    _hcore = nil;
+    
+    /// 3.delete the mirror directory.
+    [[NSFileManager defaultManager] removeItemAtPath:_mirrorPath error:nil];
+    
+    /// 4.reset the mirror sender.
+    _mirrorSender = nil;
 }
 
 
@@ -153,6 +76,60 @@
     
     NSLog(@"info :%@",info);
 }
+
+
+- (IBAction)resourceRoute:(NSButton *)sender {
+    
+    NSOpenPanel *panel = [[NSOpenPanel alloc] init];
+    panel.resolvesAliases = NO;
+    panel.canChooseFiles = NO;
+    panel.canChooseDirectories = YES;
+    panel.canCreateDirectories = NO;
+    panel.allowsMultipleSelection = NO;
+    
+    NSInteger result = [panel runModal];
+    
+    if (NSModalResponseOK == result) {
+        
+        _resourcePath = panel.URL.path;
+    }
+
+    [sender setTitle:_resourcePath];
+}
+
+- (IBAction)mirrorDest:(NSButton *)sender {
+    
+    _mirrorSender = sender;
+    
+    NSOpenPanel *panel = [[NSOpenPanel alloc] init];
+    panel.resolvesAliases = NO;
+    panel.canChooseFiles = NO;
+    panel.canChooseDirectories = YES;
+    panel.canCreateDirectories = YES;
+    panel.allowsMultipleSelection = NO;
+    
+    NSInteger result = [panel runModal];
+    
+    if (NSModalResponseOK == result) {
+        
+        _mirrorPath = panel.URL.path;
+        
+        [sender setTitle:_mirrorPath];
+        
+        [self loadHybridCore];
+        
+        NSURL *url = [NSURL fileURLWithPath:_mirrorPath];
+        [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[url]];
+    }
+}
+
+- (void)loadHybridCore {
+    
+    if (!_resourcePath || !_mirrorPath) { return; }
+    
+    _hcore = [[HybridCore alloc] initWith:_resourcePath mirror:_mirrorPath];
+}
+
 
 @end
 

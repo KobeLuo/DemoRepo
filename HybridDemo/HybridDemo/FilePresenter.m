@@ -15,7 +15,7 @@
 @property (nonatomic, retain) NSURL *url;
 @end
 
-@implementation FilePresenter   
+@implementation FilePresenter
 
 - (instancetype)initWithUrl:(NSURL *)url {
     
