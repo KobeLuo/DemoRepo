@@ -113,7 +113,8 @@ static void watchCallback(ConstFSEventStreamRef streamRef,
         
         FSEventStreamCreateFlags flags = kFSEventStreamCreateFlagNone |
                                          kFSEventStreamCreateFlagWatchRoot |
-                                         kFSEventStreamEventFlagItemXattrMod;
+                                         kFSEventStreamEventFlagItemXattrMod |
+                                         kFSEventStreamCreateFlagFileEvents;
         
         FSEventStreamRef stream = FSEventStreamCreate(NULL,
                                                       &watchCallback,

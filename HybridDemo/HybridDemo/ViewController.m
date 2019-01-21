@@ -21,6 +21,7 @@
     
     NSButton *_mirrorSender;
 }
+
 @end
 
 @implementation ViewController
@@ -28,15 +29,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-//    [self createFileWatch];
 }
 
 - (void)createFileWatch {
     
     _queue = [NSOperationQueue new];
     
-    _watchPath = @"/path/to/you/want/watching";
     FileWatcher *watcher = [[FileWatcher alloc] initWithWatchPath:_watchPath];
     [_queue addOperation:watcher];
 }
@@ -48,8 +46,10 @@
 
 - (IBAction)store:(id)sender {
     
-//    NSArray *selectedItems = [FIFinderSyncController.defaultController selectedItemURLs];
-    
+    if (nil != _watchPath) {
+        
+        [self createFileWatch];
+    }
 }
 - (IBAction)free:(id)sender {
     
@@ -76,7 +76,6 @@
     
     NSLog(@"info :%@",info);
 }
-
 
 - (IBAction)resourceRoute:(NSButton *)sender {
     
@@ -112,8 +111,10 @@
     
     if (NSModalResponseOK == result) {
         
-        _mirrorPath = panel.URL.path;
+        [self free:nil];
         
+        _mirrorPath = panel.URL.path;
+        _watchPath = _mirrorPath;
         [sender setTitle:_mirrorPath];
         
         [self loadHybridCore];

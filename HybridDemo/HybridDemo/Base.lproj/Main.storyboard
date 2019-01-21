@@ -709,15 +709,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TsC-ce-8B6">
-                                <rect key="frame" x="320" y="2" width="73" height="32"/>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gxs-m2-Q0O">
+                                <rect key="frame" x="292" y="73" width="166" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Store" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="e27-CQ-cBA">
+                                <buttonCell key="cell" type="push" title="Free the mirror route" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Fwm-Lz-TXh">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="store:" target="XfG-lQ-9wD" id="tzP-E3-L8G"/>
+                                    <action selector="free:" target="XfG-lQ-9wD" id="bLv-0Z-K3l"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T6e-rP-ocj">
@@ -742,15 +742,15 @@
                                     <action selector="mirrorDest:" target="XfG-lQ-9wD" id="CGw-V1-9CB"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gxs-m2-Q0O">
-                                <rect key="frame" x="292" y="73" width="166" height="32"/>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TsC-ce-8B6">
+                                <rect key="frame" x="41" y="73" width="162" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Free the mirror route" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Fwm-Lz-TXh">
+                                <buttonCell key="cell" type="push" title="Monitor mirror route" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="e27-CQ-cBA">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="free:" target="XfG-lQ-9wD" id="bLv-0Z-K3l"/>
+                                    <action selector="store:" target="XfG-lQ-9wD" id="tzP-E3-L8G"/>
                                 </connections>
                             </button>
                         </subviews>
