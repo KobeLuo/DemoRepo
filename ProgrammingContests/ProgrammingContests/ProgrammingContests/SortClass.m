@@ -19,20 +19,16 @@ void testSort() {
     
     printf("\n========Insert Sort=========\n");
     int a[] = {31,41,59,26,41,58};
+    logSource(a, sizeof(a)/sizeof(int));
     int *result = insertSort(a,sizeof(a)/sizeof(int));
-    printf("result:{%d,%d,%d,%d,%d,%d} \n",result[0],result[1],result[2],result[3],result[4],result[5]);
+    logResult(result, sizeof(a)/sizeof(int));
     
     printf("\n========Merge Sort=========\n");
 //    int b[] = {31,2,41,59,26,124,1,43,0,41,58,6,72,38,11};
     int b[] = {12,8,7,5,3};
+    logSource(b, sizeof(b)/sizeof(int));
     mergeSort(b,sizeof(b)/sizeof(int));
-    result = b;
-    printf("result:{");
-    for (int index = 0; index < sizeof(b)/sizeof(int); index ++) {
-        
-        printf("%d,",b[index]);
-    }
-    printf("}\n");
+    logResult(b,sizeof(b)/sizeof(int));
     
     printf("\n=========Check values exist in array=========\n");
     int c[] = {12,8,7,3,8,5,3};
@@ -40,9 +36,37 @@ void testSort() {
     printf("values:{12,8,7,3,8,5,3},sum:12 exist:%d\n",sumCheck(c, sizeof(c)/ sizeof(int), 12));
     printf("values:{12,8,7,3,8,5,3},sum:6 exist:%d\n",sumCheck(c, sizeof(c)/ sizeof(int), 6));
 
+    printf("\n=========Bubble sort=========\n");
+    int d[] = {22,1,32,14,324,75,3,24,15,7,9,28,32};
+    logSource(d, sizeof(d)/sizeof(int));
+    bubbleSort(d,sizeof(d)/sizeof(int));
+    logResult(d,sizeof(d)/sizeof(int));
+    
     
 }
-
+void logSource(int *a, int count) {
+    
+    logWith(a,count,"source");
+}
+void logResult(int *a, int count) {
+    
+    logWith(a,count,"result");
+}
+void logWith(int *a, int count, char *str) {
+    
+    printf("%s:{",str);
+    for (int index = 0; index < count; index ++) {
+        
+        if (index == count - 1) {
+            
+            printf("%d",a[index]);
+        }else {
+            
+            printf("%d,",a[index]);
+        }
+    }
+    printf("}\n");
+}
 #pragma mark - insert sort
 
 int *insertSort(int *a, int count) {
@@ -82,7 +106,19 @@ int *insertValueToArray(int *a, int count, int value) {
     a[count] = lastv;
     return a;
 }
-
+#pragma mark - bubble Sort
+void bubbleSort(int *a, int count) {
+    
+    for (int fv = 0; fv < count; fv ++) {
+        for (int sv = fv + 1; sv < count; sv ++) {
+            
+            if (a[fv] > a[sv]) {
+                
+                int temp = a[sv]; a[sv] = a[fv]; a[fv] = temp;
+            }
+        }
+    }
+}
 
 #pragma mark - Merge sort
 void mergeSort(int *a, int count) {
@@ -148,7 +184,7 @@ void mergeData(int *a, int leftStart, int rightStart, int end,int *tempBuffer) {
         a[leftStart + index] = tempBuffer[leftStart + index];
     }
 }
-
+//以下合并排序虽能完成功能，但性能太差，创建了太多临时堆栈,资源消耗过大。
 int *merge1Sort(int *a,int count) {
     
     int leftCount  = count / 2;
